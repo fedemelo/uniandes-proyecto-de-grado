@@ -17,17 +17,14 @@
 %\renewcommand{\baselinestretch}{2} % Interlineado.
 
 
-% Longtable environment
-\RequirePackage{longtable}
-\setlength\LTleft{0pt} % Longtables aligned to the left.
-\setlength\LTright\fill
-\setlength{\LTpre}{0pt} % No extra space before longtables (default is \bigskipamount)
-\setlength{\LTpost}{0pt} % No extra space after longtables.
+% Language
+\RequirePackage[spanish]{babel}
+\RequirePackage{hyphenat} % Manage hyphenation.
 
 
 % Customization of barriers for floats
-\usepackage{placeins} % Defines command \FloatBarrier so floats cannot bypass a certain point.
-\usepackage{nicefrac} % Fractions with / format.
+\RequirePackage{placeins} % Defines command \FloatBarrier so floats cannot bypass a certain point.
+\RequirePackage{nicefrac} % Fractions with / format.
 \let\Oldsection\section
 \renewcommand{\section}{\FloatBarrier\Oldsection} % Floats stay within the section they are placed.
 \let\Oldsubsection\subsection
@@ -44,11 +41,20 @@
 \newcommand{\XVIPT}{\@setfontsize\xvipt{16}{20}}
 
 
-% Captions for floats in sans serif font
-\RequirePackage[bf,sf,footnotesize,indent]{caption2}
-\setlength{\captionmargin}{0.8cm}
-\renewcommand{\captionfont}{\sffamily\footnotesize\bfseries}
-\renewcommand{\captionlabeldelim}{.}
+% Tables
+\RequirePackage{booktabs}
+\renewcommand{\tablename}{Tabla}
+\addto\captionsspanish{\renewcommand{\tablename}{Tabla}}  % Change "Cuadro" to "Tabla"
+% Captions for floats
+\RequirePackage{caption}
+\captionsetup[table]{
+  format=plain,           
+  labelsep=newline,  % Ensures the title is placed below "Tabla 1"
+  labelfont={bf,sf},  % "Tabla 1" in bold sans-serif
+  textfont={normalfont,it},  % Title in normal serif and italics
+  justification=raggedright,  % Left-align the caption
+  singlelinecheck=off  % Allow multiline captions without centering each line
+}
 
 
 % Customization of itemize environment
@@ -138,12 +144,8 @@
 \pagestyle{fancy}
 \fancyhead{}
 \fancyfoot{} 
-\fancyhead[OL]{\normalsize \textbf{\thepage} \quad \textcolor{green!50!black}{\(\bullet\)}  \quad \textsf{\title} \hbox{  }}
+\fancyhead[OL]{\normalsize \textbf{\thepage} \quad \textcolor{green!50!black}{\(\bullet\)}  \quad \textsf{Propuesta de proyecto de grado} \hbox{  }}
 \fancyhead[OR]{}
 \fancyhead[EL]{}
-\fancyhead[ER]{\normalsize \textsf{\subject} \quad \textcolor{green!50!black}{\(\bullet\)} \quad \textbf{\thepage}}
+\fancyhead[ER]{\normalsize \textsf{Federico Melo Barrero} \quad \textcolor{green!50!black}{\(\bullet\)} \quad \textbf{\thepage}}
 
-
-% Language
-\RequirePackage[spanish]{babel}
-\RequirePackage{hyphenat} % Manage hyphenation.
