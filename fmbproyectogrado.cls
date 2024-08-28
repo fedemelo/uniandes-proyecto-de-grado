@@ -108,7 +108,7 @@
 \newcommand{\instnum}{\arabic{instn}}
 \newcommand{\inst}[1]{\ensuremath{^{#1}}}
 \newcommand{\nextinstitute}{\\\mbox{}\\[-6pt] \addtocounter{instn}{1}\inst{\instnum}}
-\newcommand{\email}[1]{\\\mbox{}\\[-6pt]\footnotesize\texttt{#1}}
+\newcommand{\email}[1]{\\\mbox{}\\[-6pt]\footnotesize\href{mailto:#1}{\texttt{#1}}}
 \renewcommand{\and}{, }
 
 \newcommand{\authortag}[1]{$^{#1}$}

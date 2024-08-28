@@ -1,7 +1,7 @@
 \documentclass{fmbproyectogrado}
 
 
-\title{Desarrollo del perfil académico del estudiante uniandino}
+\title{Desarrollo del perfil académico del estudiante\\dentro de No estás solx}
 \author{Federico Melo Barrero\inst{1}}
 \email{f.melo@uniandes.edu.co}
 \address{Universidad de los Andes, Bogotá D.C., Colombia}
@@ -13,24 +13,24 @@
 
 \section{Contexto}
 
-En los últimos dos años, la Vicedecantura de Asuntos Estudiantiles de la Universidad de los Andes identificó dos dolencias significativas concernientes al estudiantado y al profesorado, respectivamente. La primera, consiste del desconocimiento por parte de los estudiantes de la inmensa cantidad de recursos y servicios de apoyo que la Universidad pone a su disposición en pos de su éxito académico, social, personal y profesional. La segunda, radica en la dificultad y falta de recursos que tenían los profesores a la hora de ejercer su labor como consejeros en apoyo a los estudiantes.
+En los últimos dos años, la Vicedecantura de Asuntos Estudiantiles de la Universidad de los Andes identificó dos dolencias significativas concernientes al estudiantado y al profesorado, respectivamente. La primera, consiste en el desconocimiento por parte de los estudiantes de la inmensa cantidad de recursos y servicios de apoyo que la Universidad pone a su disposición en pos de su éxito académico, social, personal y profesional. La segunda, radica en la dificultad y falta de recursos que tenían los profesores a la hora de ejercer su labor como consejeros en apoyo a los estudiantes.
 
-Como herramienta para subsanar estas dolencias, la Vicedecantura ha propulsado el desarrollo y la extensión de una aplicación web: No Estás Solo. Los propósitos de esta aplicación son dos, alineados con el par de problemáticas descritas anteriormente: por un lado, recopilar todos los recursos, servicios e información de parte de la Universidad que puedan resultar de utilidad al estudiantado y, por otro lado, realizar la misma labor pero con aquellos recursos, servicios e información que puedan ser de utilidad a los profesores para ofrecer consejerías a los estudiantes.
+Como herramienta para subsanar estas dolencias, la Vicedecantura ha propulsado el desarrollo y la extensión de una aplicación web: No estás solx (en adelante, NES). Los propósitos de esta aplicación son dos, alineados con el par de problemáticas descritas anteriormente: por un lado, recopilar todos los recursos, servicios e información de parte de la Universidad que puedan resultar de utilidad al estudiantado y, por otro lado, realizar la misma labor pero con aquellos recursos, servicios e información que puedan ser de utilidad a los profesores para ofrecer consejerías a los estudiantes.
 
-En el marco de esa aplicación web, existe una problemática que hasta hace muy recientemente no tenía una solución clara: la ausencia de información relacionada con el desempeño académico, tanto para el estudiante como para el profesor que lo aconseja. Como respuesta, sería óptimo desarrollar un módulo de la aplicación que permitiera a los estudiantes consultar información relacionada con su desempeño académico y a los profesores consultar información relacionada con el desempeño académico de sus estudiantes aconsejados.
+En el marco de esa aplicación web, existe una problemática que hasta hace poco no tenía una solución clara: la ausencia de información relacionada con el desempeño académico, tanto para el estudiante como para el profesor que lo aconseja. Como respuesta, sería óptimo desarrollar un módulo de la aplicación que permitiera a los estudiantes consultar información relacionada con su desempeño académico y a los profesores consultar información relacionada con el desempeño académico de sus estudiantes aconsejados.
 
 
 \section{Objetivo general}
 
-El objetivo general de este proyecto es proporcionar a todo el estudiantado y al profesorado de la Universidad de los Andes una herramienta digital que les permita consultar información relacionada con el desempeño académico actual y pasado de los estudiantes de la Universidad.
+El objetivo general de este proyecto es proporcionar a todo el estudiantado y al profesorado de la Universidad de los Andes una herramienta digital que les permita consultar información relacionada con el desempeño académico actual y anterior de los estudiantes de la Universidad.
 
 \section{Objetivos específicos}
 
 El objetivo general enunciado recién se desglosa en los siguientes objetivos específicos:
 \begin{itemize}
   \item Conseguir, mediante una herramienta de software, el acceso a la información académica de los estudiantes de la Universidad de los Andes de manera que pueda interactuar con una aplicación web, idealmente siguiendo los lineamientos de un API REST.
-  \item Diseñar e implementar un módulo de la aplicación web No Estás Solo que extraiga y exhiba la información académica de cualquier estudiante de la Universidad de los Andes. Realizar la distinción entre la forma en la que se presenta la información para estudiantes de pregrado y estudiantes de posgrado, en particular, distinguir entre los resultados de un mismo estudiante en su pregrado y en su posgrado, teniendo completa trazabilidad de su trayectoria académica cuando sea el caso.
-  \item Conectar el módulo con la navegación y funcionalidades ya existentes en la aplicación web No Estás Solo, de forma que cada estudiante pueda tener acceso a su información académica (mas no a la de otros estudiantes), cada profesor consejero pueda tener acceso a la información académica de sus estudiantes aconsejados y otros usuarios específicos, determinados por la Vicedecantura, puedan tener acceso a la información académica de los estudiantes que les conciernan.
+  \item Diseñar e implementar un módulo de la aplicación web NES que extraiga y exhiba la información académica de cualquier estudiante de la Universidad de los Andes. Realizar la distinción entre la forma en la que se presenta la información para estudiantes de pregrado y estudiantes de posgrado, en particular, distinguir entre los resultados de un mismo estudiante en su pregrado y en su posgrado, teniendo completa trazabilidad de su trayectoria académica cuando sea el caso.
+  \item Conectar el módulo con la navegación y funcionalidades ya existentes en la aplicación web NES, de forma que cada estudiante pueda tener acceso a su información académica (mas no a la de otros estudiantes), cada profesor consejero pueda tener acceso a la información académica de sus estudiantes aconsejados y otros usuarios específicos, determinados por la Vicedecantura, puedan tener acceso a la información académica de los estudiantes que les conciernan.
   \item Garantizar la integridad y seguridad de la información académica de los estudiantes de la Universidad de los Andes, tanto informáticamente como en su presentación, de forma que se cumpla con la normativa de protección de datos personales y de información académica de la Universidad.
 \end{itemize}
 
@@ -38,9 +38,9 @@ El objetivo general enunciado recién se desglosa en los siguientes objetivos es
 
 El presente proyecto se puede dar por culminado una vez se satisfaga el siguiente conjunto de resultados:
 \begin{itemize}
-  \item Existencia de un módulo de la aplicación web No Estás Solo que permita a cada estudiante de la Universidad de los Andes, tanto de pregrado como de posgrado, consultar información relacionada con su desempeño académico.
-  \item Existencia de un módulo de la aplicación web No Estás Solo que permita a cada profesor de la Universidad de los Andes consultar información relacionada con el desempeño académico de cada uno de sus estudiantes aconsejados, de forma individual.
-  \item Existencia de un módulo de la aplicación web No Estás Solo que permita a usuarios específicos, como decanos, directores de programas u otros directivos de la Universidad de los Andes, consultar información relacionada con el desempeño académico de los estudiantes de la Universidad que les conciernan.
+  \item Existencia de un módulo de la aplicación web NES que permita a cada estudiante de la Universidad de los Andes, tanto de pregrado como de posgrado, consultar información relacionada con su desempeño académico.
+  \item Existencia de un módulo de la aplicación web NES que permita a cada profesor de la Universidad de los Andes consultar información relacionada con el desempeño académico de cada uno de sus estudiantes aconsejados, de forma individual.
+  \item Existencia de un módulo de la aplicación web NES que permita a usuarios específicos, como decanos, directores de programas u otros directivos de la Universidad de los Andes, consultar información relacionada con el desempeño académico de los estudiantes de la Universidad que les conciernan.
 \end{itemize}
 
 
@@ -50,14 +50,14 @@ En aras de alcanzar los resultados esperados, se propone la siguiente metodolog�
 
 \begin{itemize}
   \item \textbf{Estado del arte:} Se buscará realizar una revisión bibliográfica de la forma en la que diversas instituciones educativas presentan la información académica de sus estudiantes, idealmente si esta se presenta en aplicaciones web. Esta revisión está sujeta a la disponibilidad pública de la información.
-  \item \textbf{Diseño visual del perfil académico:} Se diseñará la interfaz gráfica del módulo de información académica de la aplicación web No Estás Solo. Este diseño estará en consonancia con los hallazgos de la revisión bibliográfica y seguirá las buenas prácticas de exhibición gráfica de información, en particular las concernientes a la construcción de tableros de control. En el proyecto se justificará las decisiones de diseño tomadas con base en la literatura pertinente.
-  \item \textbf{Diseño de la arquitectura:} Se diseñará la arquitectura de las herramientas de software necesarias para extraer la información académica, procesarla de forma segura y acertada y transmitirla a la aplicación web No Estás Solo. El diseño incluirá decisiones relacionadas tanto a arquitectura de software como a la infraestructura tecnológica necesaria para soportar su funcionamiento.
+  \item \textbf{Diseño visual del perfil académico:} Se diseñará la interfaz gráfica del módulo de información académica de la aplicación web NES. Este diseño estará en consonancia con los hallazgos de la revisión bibliográfica y seguirá las buenas prácticas de exhibición gráfica de información, en particular las concernientes a la construcción de tableros de control. En el proyecto se justificará las decisiones de diseño tomadas con base en la literatura pertinente.
+  \item \textbf{Diseño de la arquitectura:} Se diseñará la arquitectura de las herramientas de software necesarias para extraer la información académica, procesarla de forma segura y acertada y transmitirla a la aplicación web NES. El diseño incluirá decisiones relacionadas tanto a arquitectura de software como a la infraestructura tecnológica necesaria para soportar su funcionamiento.
   \item \textbf{Desarrollo de la aplicación:} Se desarrollará la aplicación encargada del procesamiento de la información mencionado en el numeral anterior. En particular, se desarrollará un API REST que actuará de intermediario entre la base de datos de la Universidad y la aplicación web.
-  \item \textbf{Desarrollo del módulo y conexión con la aplicación existente:} Se desarrollará el módulo de información académica en la aplicación web No Estás Solo. Este módulo se conectará con el API REST desarrollado en el numeral anterior y se encargará de presentar la información académica de los estudiantes de la Universidad de los Andes de forma segura y acertada. Se realizará la conexión con la navegación y funcionalidades ya existentes en la aplicación web No Estás Solo, garantizando, entre otras cosas, la correcta autenticación y autorización de los usuarios.
-  \item \textbf{Calidad de Software:} Se emplearán herramientas especializadas para garantizar la calidad de todo el software desarrollado. Lo anterior incluye, pero no necesariamente se limita a, el desarrollo de pruebas unitarias y el uso de aplicaciones de análisis estático de código.
-  \item \textbf{Despliegue:} Se desplegarán el API REST y el nuevo módulo de aplicación web No Estás Solo para que pueda ser utilizada por el estudiantado y el profesorado de la Universidad de los Andes.
+  \item \textbf{Desarrollo del módulo y conexión con la aplicación existente:} Se desarrollará el módulo de información académica en la aplicación web NES. Este módulo se conectará con el API REST desarrollado en el numeral anterior y se encargará de presentar la información académica de los estudiantes de la Universidad de los Andes de forma segura y acertada. Se realizará la conexión con la navegación y funcionalidades ya existentes en la aplicación web NES, garantizando, entre otras cosas, la correcta autenticación y autorización de los usuarios.
+  \item \textbf{Calidad de Software:} Se emplearán herramientas especializadas para garantizar la calidad de todo el software desarrollado. Lo anterior incluye, pero no se limita necesariamente a, el desarrollo de pruebas unitarias y el uso de aplicaciones de análisis estático de código.
+  \item \textbf{Despliegue:} Se desplegarán el API REST y el nuevo módulo de aplicación web NES para que pueda ser utilizada por el estudiantado y el profesorado de la Universidad de los Andes.
   \item \textbf{Documentación:} Existirá documentación completa del proceso de desarrollo de las herramientas mencionadas, tanto en las herramientas mismas como en el documento de proyecto de grado, para asegurar su mantenibilidad en el futuro.
-  \item \textbf{Capacitación:} De considerarse necesario, se realizará material de capacitación para instruir a los usuarios (ya sean estudiantes, profesores o directivos) en el uso de la nueva funcionalidad de la aplicación web No Estás Solo.
+  \item \textbf{Capacitación:} De considerarse necesario, se elaborará material de capacitación para instruir a los usuarios (ya sean estudiantes, profesores o directivos) en el uso de la nueva funcionalidad de la aplicación web NES.
 \end{itemize}
 
 \section{Cronograma de actividades}
@@ -76,8 +76,7 @@ Se presenta a continuación el cronograma de actividades propuesto para el desar
   3  &  Agosto 19 a agosto 24           & Diseño y documentación de la arquitectura de software \\
   4  &  Agosto 26 a agosto 31           & Desarrollo del API REST \\
   5  &  Septiembre 2 a septiembre 7     & Desarrollo de pruebas y revisión de calidad de software en el API REST \\
-  6  &  Septiembre 9 a septiembre 14    & Desarrollo del módulo de información académica en la aplicación web No Estás Solo \\
-  7  &  Septiembre 16 a septiembre 21   & Integración del módulo con la aplicación web No Estás Solo \\
+  6  &  Septiembre 9 a septiembre 14    & Desarrollo del módulo de información académica en la aplicación web NES \\
   8  &  Septiembre 23 a septiembre 28   & Pruebas e integración continua del módulo con el resto del sistema \\
   Receso  &  Septiembre 30 a octubre 5   & Receso académico \\
   9  &  Octubre 7 a octubre 12          & Pruebas internas del módulo desplegado en un ambiente de pruebas \\
