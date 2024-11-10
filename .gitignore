@@ -1,3 +1,6 @@
+# LaTeX Indent
+*.bak*
+
 # Minted
 _minted-*
 
