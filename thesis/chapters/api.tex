@@ -1,0 +1,40 @@
+\chapter{API}
+
+\section{API REST para el perfil del estudiante}
+
+%TODO: Agradecimiento a José, mi profesor en Desarrollo, Web y APIs
+
+Esta sección se ocupa de describir en detalle la \gls{API REST} que recoge los archivos ya procesados del Blob Storage y los expone como recursos accesibles para el frontend del perfil del estudiante.
+
+
+\section{Calidad de código}
+
+%TODO: Agradecimiento a Ruby y a Cardozo, la primera mi profesora en Métricas y Calidad de SW; el segundo además profesor mío en Reinforcement Learning
+
+Teniendo en cuenta que el software producido es de alto valor para la universidad y por ende probablemente querrá ser mantenido, extendido y reutilizado en el futuro, su desarrollo fue sometido a rigurosos estándares de calidad de código. Esta sección detalla las herramientas y prácticas empleadas para garantizar la calidad del código.
+
+\begin{resumen}
+  Se realizaron múltiples esfuerzos para garantizar la calidad del código del proyecto:
+  \begin{itemize}
+    \item Se documentaron todas las funciones y métodos con \glslink{docstring}{docstrings} siguiendo la convención de \gls{Pandas}.
+    \item Se utilizaron \gls{isort} y \gls{black} como \glslink{formateador}{formateadores}, \gls{Flake8} y \gls{SonarLint} como \glslink{linter}{linters}, y \gls{doctest} y \gls{Pytest} para las \gls{pruebas unitarias}.
+    \item Se configuró un \gls{hook} de pre-commit de \gls{Git} para garantizar el formato y ejecutar las pruebas antes de cada commit.
+    \item Se estableció un \gls{pipeline} en \gls{GitHub Actions} que ejecuta las pruebas, genera un reporte de cobertura y lo envía a \gls{SonarQube}.
+    \item Se configuró \gls{SonarQube} para realizar análisis estático sobre el código, usando el \gls{perfil de calidad} estándar para \gls{Python} 3.11.
+  \end{itemize}
+\end{resumen}
+
+%TODO: Organizar todo esto para explicar las configuraciones de cada cosa que usé
+
+Todas las funciones y métodos de la \gls{API} están documentados mediante \glslink{docstring}{\textit{docstrings}}. Naturalmente, los docstrings siguen las convenciones definidas en el estándar \href{https://peps.python.org/pep-0257/}{\gls{PEP} 257}. Más aún, debido a que las disposiciones del estándar son notablemente flexibles, se optó por seguir la afamada convención de docstrings de \gls{NumPy}. Más específicamente, se satisfacen todos los lineamientos de la \href{https://python-sprints.github.io/pandas/guide/pandas_docstring.html}{guía de docstrings de \gls{Pandas}}.
+
+
+
+Su sintaxis satisface el estilo \glslink{reST}{reStructuredText (REST)}, 
+% TODO: lo cual permite que los docstrings sean procesados por herramientas como \gls{Sphinx}, que genera documentación automáticamente a partir de ellos.
+
+
+
+Se hace uso del linter \gls{Flake8}, 
+
+Se emplea la librería \verb|flake8-docstrings|, con la configuración \verb|docstring-convention=numpy| en el archivo de configuración de Flake8, para verificar que los docstrings sigan la convención de NumPy. 

@@ -1,0 +1,186 @@
+\chapter{Perfil del estudiante}
+
+\section{Diseño del perfil académico del estudiante}
+
+La presente sección ahonda en el diseño del perfil académico del estudiante, en el cual se pueden discernir cinco etapas. En primer lugar, se reconocen y segregan los distintos tipos de usuario que se espera hagan uso del perfil académico. Tras eso, para cada tipo de usuario, se identifica cuáles son los escenarios en los que va a interactuar con el perfil y cuál es el propósito de su interacción en cada uno de ellos. Luego, con base en eso, se determina qué información debe incluirse en el perfil. Una vez se ha establecido la información que debe contener el perfil académico, se procede a seleccionar y justificar el artefacto visual más adecuado para presentar cada pieza de información. Finalmente, se elige una configuración visual para el perfil académico que facilite su interpretación y se explica el raciocinio detrás de dicha disposición.
+
+A cada etapa del diseño se le destina una subsección. Cada subsección se titula con la interrogante que resuelve. Verbigracia, la primera subsección se titula: ``¿Quiénes usarán el perfil académico?'', pues describe precisamente qué actores interactuarán con el perfil.
+
+\subsection{¿Quiénes usarán el perfil académico?}
+
+Al determinar los usuarios del perfil académico es imperativo cerciorarse de no omitir a ninguno de los actores que interactuarán con él. Para reducir el riesgo de que eso suceda, la metodología utilizada para identificar los usuarios del perfil académico consiste en primero listar a todos los actores que están relacionados con la Universidad de los Andes y, luego, para cada actor, determinar si tiene la necesidad de consultar el perfil académico del estudiante.
+
+Para conformar una lista exhaustiva de todos los actores que interactúan con la Universidad de los Andes se hace uso de dos artefactos. Por un lado, se recurre al catálogo de actores propuesto por Villalobos \cite{villalobos2021} al interior de su trabajo sobre el modelo de negocio. Dicho artefacto, propio de la arquitectura empresarial, está diseñado para identificar y describir las personas que interactúan con un negocio recibiendo o usando los servicios que éste ofrece. Como el principal negocio de la Universidad de los Andes es la educación, el catálogo de actores propuesto por Villalobos engloba prácticamente a todos los actores que no son empleados de la Universidad. 
+
+Por otro lado, pse toma como base la documentación sobre gobierno y estructura organizacional de la Universidad \cite{gobieronEstructuraOrganizacional}. Los actores se organizan en un artefacto similar al catálogo de actores, pero con un campo adicional que incluye todos los cargos que engloba ese actor.
+
+
+tomó como base la documentación sobre gobierno y estructura organizacional de la Universidad \cite{gobiernoEstructuraOrganizacional}. Los actores se organizan en un artefacto
+
+
+ La adaptación que se realiza al artefacto es que se incluyen también los actores del modelo organizacional, para así desglosar todos los individuos que interactúan con la Universidad de los Andes.
+
+Se muestra el catálogo de actores extendido para la Universidad de los Andes en la Tabla \ref{tab:actores}.
+
+\begin{table}[h]
+  \caption{Actores que interactúan con la Universidad de los Andes}
+  \centering
+  \alternatecolors
+  \begin{tabular}{|p{0.25\linewidth}|p{0.25\linewidth}|p{0.5\linewidth}|}
+  \hline
+  \textbf{Nombre} & \textbf{Tipo} & \textbf{Descripción} \\
+  \hline
+  Estudiante & Usuario & Persona que está matriculada en la Universidad de los Andes. \\
+  Acudiente & Cliente & Persona que tiene a su cargo la responsabilidad de un estudiante. \\ \hline
+  Profesor & Empleado & Persona que imparte clases en la Universidad de los Andes. \\ \hline
+  Coordinador & Empleado & Persona que coordina un programa académico en la Universidad de los Andes. \\ \hline
+  Director de programa & Empleado & Persona que dirige un programa académico en la Universidad de los Andes. \\
+  Vicedecano & Empleado & Persona que asiste al decano en la dirección de una facultad en la Universidad de los Andes. \\
+  Decano & Empleado & Persona que lidera una facultad en la Universidad de los Andes. \\
+  Vicerrector & Empleado & Persona que lidera una de las cuatro vicerrectorías en la Universidad de los Andes. \\
+  Alto administrativo & Empleado & Persona que ocupa un cargo de alta dirección en la Universidad de los Andes. \\
+  \hline
+  \end{tabular}
+  \label{tab:actores}
+\end{table}
+
+
+\subsection{¿Para qué se usará el perfil académico?}
+
+Se espera que el perfil académico del estudiante sea una de las funcionalidades más útiles de \gls{NES}. En aras de cumplir con esa expectativa, es fundamental determinar todos los casos de uso que se espera que el perfil académico satisfaga. Para poder identificar dichos casos de uso, la estrategia empleada fue reconocer los diferentes actores que interactuarán con el perfil académico y, con base en eso, inferir qué información necesitarán de él.
+
+Así pues, el artefacto seleccionado para identificar los actores y sus necesidades fue un diagrama de casos de uso. Se muestra en la Figura \ref{fig:casos_de_uso}.
+% TODO: Elegir artefacto
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{casos_de_uso.png}
+%     \caption{Diagrama de casos de uso del perfil académico del estudiante}
+%     \label{fig:casos_de_uso}
+% \end{figure}
+
+El diagrama anterior traduce naturalmente a historias de usuario. Cada historia de usuario es una descripción de un caso de uso específico por parte de un actor particular. 
+TODO: Además, se habló con los actores.
+
+Obviamente, el perfil académico del estudiante debe satisfacer todas las historias de usuario listadas en la Tabla \ref{tab:historias_de_usuario}.
+
+\subsection{¿Qué información debe incluir el perfil del estudiante?}
+
+La importancia de esta etapa del proceso es evidente. Exhibir muy poca información reduce la utilidad del perfil, mientras que mostrar demasiada resulta en un perfil abrumador y complicado de interpretar. El segundo escenario es indeseable, mas el primero es inaceptable: no puede ocurrir que el perfil del estudiante no satisfaga alguno de los casos de uso para los cuales se contempló.
+
+Con eso en mente, una forma de cerciorarse de que se recoge toda la información necesaria para satisfacer todas las historias de usuario es simplemente listar todas las piezas de información que son necesarias para cada historia de usuario. La Tabla \ref{tab:informacion} registra esa labor y por ende resume la información que debe incluirse en el perfil académico.
+
+\subsubsection{información general}
+
+La información general del estudiante es la primera sección de su perfil. La información incluida en esta sección es la que se considera más relevante para identificar al estudiante y permitir contactarlo. Esta información es independiente del nivel académico del estudiante.
+
+
+El propósito de esta información es identificar al estudiante y permitir contactarlo. La información general incluye:
+\begin{itemize}
+  \item Nombre legal completo
+  \item Código Uniandes
+  \item Usuario Uniandes
+  \item Contacto por correo electrónico Uniandes
+  \item Contacto por Microsoft Teams
+  \item Link a Advise (TODO: Esto se queda?)
+\end{itemize}
+
+Adicionalmente
+
+
+
+\subsection{¿Cómo presentar la información en el perfil académico?}
+
+
+
+Tras determinar qué información será incluida el perfil académico, es necesario decidir cómo presentarla. La calidad del perfil depende en gran medida de elegir el artefacto visual más adecuado para cada pieza de información.
+
+
+
+
+
+\subsection{¿Cómo organizar visualmente el perfil académico?}
+
+Finalmente, una vez se ha decidido qué información incluir y cómo presentar cada pieza de información, es necesario determinar cómo organizar visualmente el perfil académico. La disposición de los elementos visuales incide en la facilidad de interpretación del perfil académico.
+
+
+
+
+
+
+
+\subsection{TODO: Titulo. Organizando el perfil}
+
+El perfil del estudiante idealmente debe constar de:
+\begin{enumerate}
+  \item Información personal
+  \item Información académica
+  \item Información financiera
+\end{enumerate}
+En caso de que un estudiante haya estado vinculado con la universidad en más de un nivel académico, la información académica y financiera se debe presentar de manera separada para cada nivel académico.
+
+Los niveles académicos posibles son cuatro: pregrado, extensión, magister y doctorado. No tenemos (ni tendremos?) información financiera para estudiantes de posgrado, por lo cual no se muestra información financiera para los niveles de extensión, magister y doctorado.
+
+Por ende, el perfil de un estudiante tiene a lo sumo seis secciones:
+\begin{itemize}
+  \item Información personal.
+  \item Información como estudiante de pregrado.
+  \begin{itemize}
+    \item Académica
+    \item Financiera
+  \end{itemize}
+  \item Información académica como estudiante de extensión.
+  \item Información académica como estudiante de magister.
+  \item Información académica como estudiante de doctorado.
+\end{itemize}
+La primera sección estará presente en todos los perfiles de estudiantes, mientras que las otras cuatro secciones se mostrarán únicamente si el estudiante ha estado vinculado con la universidad en el nivel académico correspondiente.
+
+\subsubsection{Información personal}
+
+
+\subsubsection{Información como estudiante de pregrado}
+
+Para todos los estudiantes que hayan cursado, parcial o completamente, un pregrado en la Universidad de los Andes, se mostrará la sección de información como estudiante de pregrado. Esta sección se divide en dos subsecciones: información académica y financiera.
+
+La información académica incluida en esta sección no pretende ser un resumen, sino más bien una descripción detallada del desempeño académico del estudiante durante su pregrado. El reto es presentar toda esta información de manera clara y concisa, de forma que sea posible obtener una visión general del desempeño académico del estudiante sin necesidad de examinar cada dato en detalle, pero también sea viable realizar una inspección detallada de ser necesario.
+
+Las tablas a continuación detallan la información incluida en la sección de información académica como estudiante de pregrado y los artefactos visuales utilizados para presentarla.
+
+\begin{table}[H]
+    \centering
+    \caption{Datos incluidos en la sección de información académica como estudiante de pregrado y artefactos visuales utilizados para presentarlos}
+    \alternatecolors
+    \begin{tabular}{p{5cm}p{2.8cm}p{6cm}}
+    \hline
+    \textbf{Dato} & \textbf{Artefacto} & \textbf{Notas} \\ \hline
+    Promedio General Acumulado & Valor & \TODO{Al igual que antes, acá falta contexto. Cómo se compara un promedio de 4.5 del 2023 con uno de 4.5 del 2019? Conversación con Mario Sánchez sobre monitorías. Solución: percentiles o varianza/desviación/alguna comparación con el promedio de la cohorte. Gráfica de bala.} \\
+    Número de matrículas & Valor & \TODO{Mismo problema. Debe ponerse cuál es el número de matrículas esperadas por carrera. Problema: intercambios, prácticas} \\
+    Porcentaje de créditos aprobados & Valor &  \\
+    PGA por periodo & Gráfica de líneas &  \\
+    Promedio semestral por periodo & Gráfica de líneas &  \\
+    Porcentaje de créditos aprobados por periodo & Gráfica de líneas &  \\
+    Porcentaje acumulado de créditos aprobados por periodo & Gráfica de líneas &  \\
+    Número de créditos aprobados por periodo & Gráfica de líneas & \TODO{Yo creo que vale la pena combinar esta gráfica con la de arriba, en la misma vista, como habíamos pensado en algún momento}\\
+    Número de créditos aprobados acumulados por periodo & Gráfica de líneas &  \\
+    Número de suspensiones académicas & Valor &  \\
+    Número de pruebas académicas & Valor &  \\
+    Número de pruebas de reingreso & Valor &  \\
+    Número de incompletos totales & Valor &  \\
+    Número de créditos aprobados, retirados y reprobados por periodo & Gráficas de líneas superpuestas & \\
+    Total acumulado de créditos aprobados, retirados y reprobados por periodo & Gráficas de líneas superpuestas & \\
+    Total de créditos inscritos, aprobados, retirados, reprobados, incompletos y pendientes & Valores & \\
+    Total de créditos inscritos, aprobados, retirados, reprobados, incompletos y pendientes de Matemáticas & Valores & \\
+    Total de créditos inscritos, aprobados, retirados, reprobados, incompletos y pendientes de Física & Valores & \\
+    Total de créditos inscritos, aprobados, retirados, reprobados, incompletos y pendientes de la carrera principal & Valores & \\ \hline 
+    \end{tabular}
+\end{table}
+
+\TODO{Sobre esto:}
+Pasar la tabla de créditos inscritos a una barras apiladas.
+En posgrado será solo una barra.
+
+Respecto a información financiera
+
+\TODO{Podría quedar bien hacer una sola pestaña para extensión, Maestría y doctorado. Entonces, serían dos: pregrado (con académico y financiero) y posgrado.}
+
+
