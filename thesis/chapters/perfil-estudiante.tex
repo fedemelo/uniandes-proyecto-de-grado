@@ -10,7 +10,7 @@ A cada etapa del diseño se le destina una subsección. Cada subsección se titu
 
 Al determinar los usuarios del perfil académico es imperativo cerciorarse de no omitir a ninguno de los actores que interactuarán con él. Para reducir el riesgo de que eso suceda, la metodología utilizada para identificar los usuarios del perfil académico consiste en primero listar a todos los actores que están relacionados con la Universidad de los Andes y, luego, para cada actor, determinar si tiene la necesidad de consultar el perfil académico del estudiante.
 
-Para conformar una lista exhaustiva de todos los actores que interactúan con la Universidad de los Andes se hace uso de dos artefactos. Por un lado, se recurre al catálogo de actores propuesto por Villalobos \cite{villalobos2021} al interior de su trabajo sobre el modelo de negocio. Dicho artefacto, propio de la arquitectura empresarial, está diseñado para identificar y describir las personas que interactúan con un negocio recibiendo o usando los servicios que éste ofrece. Como el principal negocio de la Universidad de los Andes es la educación, el catálogo de actores propuesto por Villalobos engloba prácticamente a todos los actores que no son empleados de la Universidad. 
+Para conformar una lista exhaustiva de todos los actores que interactúan con la Universidad de los Andes se hace uso de dos artefactos. Por un lado, se recurre al catálogo de actores propuesto por Villalobos \cite{villalobos2021} al interior de su trabajo sobre el modelo de negocio. Dicho artefacto, propio de la arquitectura empresarial, está diseñado para identificar y describir las personas que interactúan con un negocio recibiendo o usando los servicios que éste ofrece. Como el principal negocio de la Universidad de los Andes es la educación, el catálogo de actores propuesto por Villalobos engloba prácticamente a todos los actores que no son empleados de la Universidad.
 
 Por otro lado, pse toma como base la documentación sobre gobierno y estructura organizacional de la Universidad \cite{gobieronEstructuraOrganizacional}. Los actores se organizan en un artefacto similar al catálogo de actores, pero con un campo adicional que incluye todos los cargos que engloba ese actor.
 
@@ -18,30 +18,30 @@ Por otro lado, pse toma como base la documentación sobre gobierno y estructura 
 tomó como base la documentación sobre gobierno y estructura organizacional de la Universidad \cite{gobiernoEstructuraOrganizacional}. Los actores se organizan en un artefacto
 
 
- La adaptación que se realiza al artefacto es que se incluyen también los actores del modelo organizacional, para así desglosar todos los individuos que interactúan con la Universidad de los Andes.
+La adaptación que se realiza al artefacto es que se incluyen también los actores del modelo organizacional, para así desglosar todos los individuos que interactúan con la Universidad de los Andes.
 
 Se muestra el catálogo de actores extendido para la Universidad de los Andes en la Tabla \ref{tab:actores}.
 
 \begin{table}[h]
-  \caption{Actores que interactúan con la Universidad de los Andes}
-  \centering
-  \alternatecolors
-  \begin{tabular}{|p{0.25\linewidth}|p{0.25\linewidth}|p{0.5\linewidth}|}
-  \hline
-  \textbf{Nombre} & \textbf{Tipo} & \textbf{Descripción} \\
-  \hline
-  Estudiante & Usuario & Persona que está matriculada en la Universidad de los Andes. \\
-  Acudiente & Cliente & Persona que tiene a su cargo la responsabilidad de un estudiante. \\ \hline
-  Profesor & Empleado & Persona que imparte clases en la Universidad de los Andes. \\ \hline
-  Coordinador & Empleado & Persona que coordina un programa académico en la Universidad de los Andes. \\ \hline
-  Director de programa & Empleado & Persona que dirige un programa académico en la Universidad de los Andes. \\
-  Vicedecano & Empleado & Persona que asiste al decano en la dirección de una facultad en la Universidad de los Andes. \\
-  Decano & Empleado & Persona que lidera una facultad en la Universidad de los Andes. \\
-  Vicerrector & Empleado & Persona que lidera una de las cuatro vicerrectorías en la Universidad de los Andes. \\
-  Alto administrativo & Empleado & Persona que ocupa un cargo de alta dirección en la Universidad de los Andes. \\
-  \hline
-  \end{tabular}
-  \label{tab:actores}
+	\caption{Actores que interactúan con la Universidad de los Andes}
+	\centering
+	\alternatecolors
+	\begin{tabular}{|p{0.25\linewidth}|p{0.25\linewidth}|p{0.5\linewidth}|}
+		\hline
+		\textbf{Nombre}      & \textbf{Tipo} & \textbf{Descripción}                                                                         \\
+		\hline
+		Estudiante           & Usuario       & Persona que está matriculada en la Universidad de los Andes.                                 \\
+		Acudiente            & Cliente       & Persona que tiene a su cargo la responsabilidad de un estudiante.                            \\ \hline
+		Profesor             & Empleado      & Persona que imparte clases en la Universidad de los Andes.                                   \\ \hline
+		Coordinador          & Empleado      & Persona que coordina un programa académico en la Universidad de los Andes.                   \\ \hline
+		Director de programa & Empleado      & Persona que dirige un programa académico en la Universidad de los Andes.                     \\
+		Vicedecano           & Empleado      & Persona que asiste al decano en la dirección de una facultad en la Universidad de los Andes. \\
+		Decano               & Empleado      & Persona que lidera una facultad en la Universidad de los Andes.                              \\
+		Vicerrector          & Empleado      & Persona que lidera una de las cuatro vicerrectorías en la Universidad de los Andes.          \\
+		Alto administrativo  & Empleado      & Persona que ocupa un cargo de alta dirección en la Universidad de los Andes.                 \\
+		\hline
+	\end{tabular}
+	\label{tab:actores}
 \end{table}
 
 
@@ -59,7 +59,7 @@ Así pues, el artefacto seleccionado para identificar los actores y sus necesida
 %     \label{fig:casos_de_uso}
 % \end{figure}
 
-El diagrama anterior traduce naturalmente a historias de usuario. Cada historia de usuario es una descripción de un caso de uso específico por parte de un actor particular. 
+El diagrama anterior traduce naturalmente a historias de usuario. Cada historia de usuario es una descripción de un caso de uso específico por parte de un actor particular.
 TODO: Además, se habló con los actores.
 
 Obviamente, el perfil académico del estudiante debe satisfacer todas las historias de usuario listadas en la Tabla \ref{tab:historias_de_usuario}.
@@ -77,12 +77,12 @@ La información general del estudiante es la primera sección de su perfil. La i
 
 El propósito de esta información es identificar al estudiante y permitir contactarlo. La información general incluye:
 \begin{itemize}
-  \item Nombre legal completo
-  \item Código Uniandes
-  \item Usuario Uniandes
-  \item Contacto por correo electrónico Uniandes
-  \item Contacto por Microsoft Teams
-  \item Link a Advise (TODO: Esto se queda?)
+	\item Nombre legal completo
+	\item Código Uniandes
+	\item Usuario Uniandes
+	\item Contacto por correo electrónico Uniandes
+	\item Contacto por Microsoft Teams
+	\item Link a Advise (TODO: Esto se queda?)
 \end{itemize}
 
 Adicionalmente
@@ -113,9 +113,9 @@ Finalmente, una vez se ha decidido qué información incluir y cómo presentar c
 
 El perfil del estudiante idealmente debe constar de:
 \begin{enumerate}
-  \item Información personal
-  \item Información académica
-  \item Información financiera
+	\item Información personal
+	\item Información académica
+	\item Información financiera
 \end{enumerate}
 En caso de que un estudiante haya estado vinculado con la universidad en más de un nivel académico, la información académica y financiera se debe presentar de manera separada para cada nivel académico.
 
@@ -123,15 +123,15 @@ Los niveles académicos posibles son cuatro: pregrado, extensión, magister y do
 
 Por ende, el perfil de un estudiante tiene a lo sumo seis secciones:
 \begin{itemize}
-  \item Información personal.
-  \item Información como estudiante de pregrado.
-  \begin{itemize}
-    \item Académica
-    \item Financiera
-  \end{itemize}
-  \item Información académica como estudiante de extensión.
-  \item Información académica como estudiante de magister.
-  \item Información académica como estudiante de doctorado.
+	\item Información personal.
+	\item Información como estudiante de pregrado.
+	      \begin{itemize}
+		      \item Académica
+		      \item Financiera
+	      \end{itemize}
+	\item Información académica como estudiante de extensión.
+	\item Información académica como estudiante de magister.
+	\item Información académica como estudiante de doctorado.
 \end{itemize}
 La primera sección estará presente en todos los perfiles de estudiantes, mientras que las otras cuatro secciones se mostrarán únicamente si el estudiante ha estado vinculado con la universidad en el nivel académico correspondiente.
 
@@ -147,32 +147,32 @@ La información académica incluida en esta sección no pretende ser un resumen,
 Las tablas a continuación detallan la información incluida en la sección de información académica como estudiante de pregrado y los artefactos visuales utilizados para presentarla.
 
 \begin{table}[H]
-    \centering
-    \caption{Datos incluidos en la sección de información académica como estudiante de pregrado y artefactos visuales utilizados para presentarlos}
-    \alternatecolors
-    \begin{tabular}{p{5cm}p{2.8cm}p{6cm}}
-    \hline
-    \textbf{Dato} & \textbf{Artefacto} & \textbf{Notas} \\ \hline
-    Promedio General Acumulado & Valor & \TODO{Al igual que antes, acá falta contexto. Cómo se compara un promedio de 4.5 del 2023 con uno de 4.5 del 2019? Conversación con Mario Sánchez sobre monitorías. Solución: percentiles o varianza/desviación/alguna comparación con el promedio de la cohorte. Gráfica de bala.} \\
-    Número de matrículas & Valor & \TODO{Mismo problema. Debe ponerse cuál es el número de matrículas esperadas por carrera. Problema: intercambios, prácticas} \\
-    Porcentaje de créditos aprobados & Valor &  \\
-    PGA por periodo & Gráfica de líneas &  \\
-    Promedio semestral por periodo & Gráfica de líneas &  \\
-    Porcentaje de créditos aprobados por periodo & Gráfica de líneas &  \\
-    Porcentaje acumulado de créditos aprobados por periodo & Gráfica de líneas &  \\
-    Número de créditos aprobados por periodo & Gráfica de líneas & \TODO{Yo creo que vale la pena combinar esta gráfica con la de arriba, en la misma vista, como habíamos pensado en algún momento}\\
-    Número de créditos aprobados acumulados por periodo & Gráfica de líneas &  \\
-    Número de suspensiones académicas & Valor &  \\
-    Número de pruebas académicas & Valor &  \\
-    Número de pruebas de reingreso & Valor &  \\
-    Número de incompletos totales & Valor &  \\
-    Número de créditos aprobados, retirados y reprobados por periodo & Gráficas de líneas superpuestas & \\
-    Total acumulado de créditos aprobados, retirados y reprobados por periodo & Gráficas de líneas superpuestas & \\
-    Total de créditos inscritos, aprobados, retirados, reprobados, incompletos y pendientes & Valores & \\
-    Total de créditos inscritos, aprobados, retirados, reprobados, incompletos y pendientes de Matemáticas & Valores & \\
-    Total de créditos inscritos, aprobados, retirados, reprobados, incompletos y pendientes de Física & Valores & \\
-    Total de créditos inscritos, aprobados, retirados, reprobados, incompletos y pendientes de la carrera principal & Valores & \\ \hline 
-    \end{tabular}
+	\centering
+	\caption{Datos incluidos en la sección de información académica como estudiante de pregrado y artefactos visuales utilizados para presentarlos}
+	\alternatecolors
+	\begin{tabular}{p{5cm}p{2.8cm}p{6cm}}
+		\hline
+		\textbf{Dato}                                                                                                   & \textbf{Artefacto}              & \textbf{Notas}                                                                                                                                                                                                                                                                      \\ \hline
+		Promedio General Acumulado                                                                                      & Valor                           & \TODO{Al igual que antes, acá falta contexto. Cómo se compara un promedio de 4.5 del 2023 con uno de 4.5 del 2019? Conversación con Mario Sánchez sobre monitorías. Solución: percentiles o varianza/desviación/alguna comparación con el promedio de la cohorte. Gráfica de bala.} \\
+		Número de matrículas                                                                                            & Valor                           & \TODO{Mismo problema. Debe ponerse cuál es el número de matrículas esperadas por carrera. Problema: intercambios, prácticas}                                                                                                                                                        \\
+		Porcentaje de créditos aprobados                                                                                & Valor                           &                                                                                                                                                                                                                                                                                     \\
+		PGA por periodo                                                                                                 & Gráfica de líneas               &                                                                                                                                                                                                                                                                                     \\
+		Promedio semestral por periodo                                                                                  & Gráfica de líneas               &                                                                                                                                                                                                                                                                                     \\
+		Porcentaje de créditos aprobados por periodo                                                                    & Gráfica de líneas               &                                                                                                                                                                                                                                                                                     \\
+		Porcentaje acumulado de créditos aprobados por periodo                                                          & Gráfica de líneas               &                                                                                                                                                                                                                                                                                     \\
+		Número de créditos aprobados por periodo                                                                        & Gráfica de líneas               & \TODO{Yo creo que vale la pena combinar esta gráfica con la de arriba, en la misma vista, como habíamos pensado en algún momento}                                                                                                                                                   \\
+		Número de créditos aprobados acumulados por periodo                                                             & Gráfica de líneas               &                                                                                                                                                                                                                                                                                     \\
+		Número de suspensiones académicas                                                                               & Valor                           &                                                                                                                                                                                                                                                                                     \\
+		Número de pruebas académicas                                                                                    & Valor                           &                                                                                                                                                                                                                                                                                     \\
+		Número de pruebas de reingreso                                                                                  & Valor                           &                                                                                                                                                                                                                                                                                     \\
+		Número de incompletos totales                                                                                   & Valor                           &                                                                                                                                                                                                                                                                                     \\
+		Número de créditos aprobados, retirados y reprobados por periodo                                                & Gráficas de líneas superpuestas &                                                                                                                                                                                                                                                                                     \\
+		Total acumulado de créditos aprobados, retirados y reprobados por periodo                                       & Gráficas de líneas superpuestas &                                                                                                                                                                                                                                                                                     \\
+		Total de créditos inscritos, aprobados, retirados, reprobados, incompletos y pendientes                         & Valores                         &                                                                                                                                                                                                                                                                                     \\
+		Total de créditos inscritos, aprobados, retirados, reprobados, incompletos y pendientes de Matemáticas          & Valores                         &                                                                                                                                                                                                                                                                                     \\
+		Total de créditos inscritos, aprobados, retirados, reprobados, incompletos y pendientes de Física               & Valores                         &                                                                                                                                                                                                                                                                                     \\
+		Total de créditos inscritos, aprobados, retirados, reprobados, incompletos y pendientes de la carrera principal & Valores                         &                                                                                                                                                                                                                                                                                     \\ \hline
+	\end{tabular}
 \end{table}
 
 \TODO{Sobre esto:}

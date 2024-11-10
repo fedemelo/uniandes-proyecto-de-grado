@@ -13,26 +13,26 @@ Los recursos provistos fueron diseñados específicamente para el \gls{CAPP} ant
 A causa de eso y como forma de separación semántica, se decidió agrupar los \textit{endpoints} bajo el prefijo \texttt{/capp/}. La tabla \ref{tab:capp_api_resources} detalla los \textit{endpoints} expuestos por la \gls{API REST} para el \gls{CAPP}.
 
 \begin{table}[H]
-  \centering
-  \alternatecolors
-  \caption{Recursos expuestos por la API REST para el CAPP}
-  \label{tab:capp_api_resources}
-  \begin{tabular}{p{1.5cm}p{2.6cm}p{3.8cm}p{2cm}p{3cm}}
-  \hline
-  \textbf{Método HTTP} & \textbf{URL} & \textbf{Descripción} & \textbf{Cuerpo de la petición} & \textbf{Respuesta} \\ \hline
-  \texttt{GET} & \texttt{/capp}\newline\texttt{/materias}\newline\texttt{/estudiante}\newline\texttt{/\{codigo estudiante\}} & Obtiene todas las materias aprobadas por un estudiante en sus estudios de pregrado. & -- & Lista de objetos \texttt{Materia} con las materias aprobadas por el estudiante. \\
-  \texttt{GET} & \texttt{/capp}\newline\texttt{/materia}\newline\texttt{/\{codigo materia\}} & Obtiene la información básica de una materia a partir de su código. & -- & Objeto \texttt{Materia} correspondiente al código. \\
-  \texttt{PUT} & \texttt{/capp}\newline\texttt{/materias/}   & Obtiene la información básica de múltiples materias a partir de una lista de sus códigos. & Lista de códigos de materias & Lista de objetos \texttt{Materia} correspondientes a los códigos provistos. \\
-  \texttt{GET} & \texttt{/capp}\newline\texttt{/estudiante}\newline\texttt{/programa/} & Obtiene la información de los programas académicos cursados por el estudiante. & -- & Lista de nombres de los programas académicos, ordenados desde el principal. \\ 
-  \end{tabular}
+	\centering
+	\alternatecolors
+	\caption{Recursos expuestos por la API REST para el CAPP}
+	\label{tab:capp_api_resources}
+	\begin{tabular}{p{1.5cm}p{2.6cm}p{3.8cm}p{2cm}p{3cm}}
+		\hline
+		\textbf{Método HTTP} & \textbf{URL}                                                                                                & \textbf{Descripción}                                                                      & \textbf{Cuerpo de la petición} & \textbf{Respuesta}                                                              \\ \hline
+		\texttt{GET}         & \texttt{/capp}\newline\texttt{/materias}\newline\texttt{/estudiante}\newline\texttt{/\{codigo estudiante\}} & Obtiene todas las materias aprobadas por un estudiante en sus estudios de pregrado.       & --                             & Lista de objetos \texttt{Materia} con las materias aprobadas por el estudiante. \\
+		\texttt{GET}         & \texttt{/capp}\newline\texttt{/materia}\newline\texttt{/\{codigo materia\}}                                 & Obtiene la información básica de una materia a partir de su código.                       & --                             & Objeto \texttt{Materia} correspondiente al código.                              \\
+		\texttt{PUT}         & \texttt{/capp}\newline\texttt{/materias/}                                                                   & Obtiene la información básica de múltiples materias a partir de una lista de sus códigos. & Lista de códigos de materias   & Lista de objetos \texttt{Materia} correspondientes a los códigos provistos.     \\
+		\texttt{GET}         & \texttt{/capp}\newline\texttt{/estudiante}\newline\texttt{/programa/}                                       & Obtiene la información de los programas académicos cursados por el estudiante.            & --                             & Lista de nombres de los programas académicos, ordenados desde el principal.     \\
+	\end{tabular}
 \end{table}
 
 El recurso \verb|Materia| mencionado en la tabla es una representación simplificada de una materia, que contiene la información mínima necesaria para el \gls{CAPP}. La figura \ref{lst:subject_capp} muestra un ejemplo de esta representación. No se hace uso de la representación \verb|SubjectResponse| mencionada en la sección \ref{sec:subject_response}, % TODO: Referenciar la sección
 ya que esta contiene información adicional y se incurriría en sobreexposición de datos.
 
 \begin{figure}[h]
-  \centering
-  \begin{minted}{json}
+	\centering
+	\begin{minted}{json}
 {
   "codigo_curso": "MATE",
   "numero_curso": "1104",
@@ -42,6 +42,6 @@ ya que esta contiene información adicional y se incurriría en sobreexposición
   "periodo": 202320
 }
   \end{minted}
-  \caption{Ejemplo de representación del recurso \texttt{Materia} para el \gls{CAPP}}
-  \label{lst:subject_capp}
-\end{figure}  
+	\caption{Ejemplo de representación del recurso \texttt{Materia} para el \gls{CAPP}}
+	\label{lst:subject_capp}
+\end{figure}
