@@ -17,7 +17,6 @@ _minted-*
 *.cb
 *.cb2
 .*.lb
-*.ist
 
 ## Intermediate documents:
 *.dvi
@@ -125,7 +124,7 @@ acs-*.bib
 *.sls
 
 # uncomment this for glossaries-extra (will ignore makeindex's style files!)
-# *.ist
+*.ist
 
 # gnuplot
 *.gnuplot
@@ -311,3 +310,5 @@ TSWLatexianTemp*
 # option is specified. Footnotes are the stored in a file with suffix Notes.bib.
 # Uncomment the next line to have this generated file ignored.
 #*Notes.bib
+
+ignore/
