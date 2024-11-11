@@ -1,0 +1,38 @@
+% Float and Table Customizations
+
+
+% Customization of barriers for floats
+\RequirePackage{placeins}  % Defines command \FloatBarrier so floats cannot bypass a certain point.
+% Floats stay within the section they are placed.
+\let\Oldsection\section
+\renewcommand{\section}{\FloatBarrier\Oldsection}
+% Floats stay within the subsection they are placed.
+\let\Oldsubsection\subsection
+\renewcommand{\subsection}{\FloatBarrier\Oldsubsection}
+% Floats stay within the subsubsection they are placed.
+\let\Oldsubsubsection\subsubsection
+\renewcommand{\subsubsection}{\FloatBarrier\Oldsubsubsection}
+
+
+% Table customization
+
+\definecolor{lightgreen}{RGB}{230, 255, 230}  % Light green color
+\newcommand{\alternatecolors}{%
+	\rowcolors{2}{white}{lightgreen} % Alternate rows between light green and white
+}
+\RequirePackage{booktabs}
+\renewcommand{\tablename}{Tabla}
+\addto\captionsspanish{\renewcommand{\tablename}{Tabla}}  % Change "Cuadro" to "Tabla"
+
+
+% Captions for floats
+
+\RequirePackage{caption}
+\captionsetup[table]{
+	format=plain,
+	labelsep=newline,  % Ensures the title is placed below "Tabla 1"
+	labelfont={bf,sf},  % "Tabla 1" in bold sans-serif
+	textfont={normalfont,it},  % Title in normal serif and italics
+	justification=raggedright,  % Left-align the caption
+	singlelinecheck=off  % Allow multiline captions without centering each line
+}
