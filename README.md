@@ -1,11 +1,10 @@
 # Proyecto de Grado
 
-Este repositorio contiene el código fuente en LaTeX de mi proyecto de grado, "Desarrollo del perfil del estudiante
-dentro de No estás solo".
+Este repositorio contiene el código fuente en LaTeX de mi proyecto de grado, "Desarrollo del Perfil del estudiante dentro de No estás solo".
 
-El perfil del estudiante es una herramienta que despliega información académica, social y financiera de un estudiante dado. Dentro de No estás solo, se hace disponible a profesores, algunos administrativos y al propio estudiante. La información es presentada en visualmente forma de gráficos, tablas y tarjetas y es actualizada en tiempo real. 
+El Perfil del estudiante es una herramienta que despliega información académica, social y financiera de un estudiante dado de la Universidad de los Andes. Es un módulo de la aplicación No estás solo, por lo que está disponible a profesores, algunos administrativos y al propio estudiante. La información es presentada en visualmente forma de gráficos, tablas y tarjetas y es actualizada en tiempo real. 
 
-La documentación técnica está escrita en inglés, como es convencional.
+La documentación técnica del código está en inglés, como es convencional.
 
 # Local Setup
 
