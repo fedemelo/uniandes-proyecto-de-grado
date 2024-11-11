@@ -2,7 +2,7 @@
 
 Este repositorio contiene el código fuente en LaTeX de mi proyecto de grado, "Desarrollo del Perfil del estudiante dentro de No estás solo".
 
-El Perfil del estudiante es una herramienta que despliega información académica, social y financiera de un estudiante dado de la Universidad de los Andes. Es un módulo de la aplicación No estás solo, por lo que está disponible a profesores, algunos administrativos y al propio estudiante. La información es presentada en visualmente forma de gráficos, tablas y tarjetas y es actualizada en tiempo real. 
+El Perfil del estudiante es una herramienta que despliega información académica, social y financiera de un estudiante dado de la Universidad de los Andes. Es un módulo de la aplicación No estás solo, por lo cual está disponible a profesores, algunos administrativos y al propio estudiante. La información es presentada en visualmente forma de gráficos, tablas y tarjetas y es actualizada en tiempo real. 
 
 La documentación técnica del código está en inglés, como es convencional.
 
