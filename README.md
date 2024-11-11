@@ -46,7 +46,10 @@ Replace `thesis/main.tex` with the path to the file you want to format.
 
 To format all TeX files, use:
 ```bash
-find . -name "*.tex" -exec latexindent -w {} +
+find . -name "*.tex" -o -name "*.cls" -o -name "*.sty" -exec latexindent -w {} +
 ```
 
-
+After formatting the code, clean up the temporary files:
+```bash
+find . -name "*.bak0" -exec rm {} +
+```
