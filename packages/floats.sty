@@ -1,6 +1,5 @@
 % Float and Table Customizations
 
-
 % Customization of barriers for floats
 \RequirePackage{placeins}  % Defines command \FloatBarrier so floats cannot bypass a certain point.
 % Floats stay within the section they are placed.
@@ -13,21 +12,32 @@
 \let\Oldsubsubsection\subsubsection
 \renewcommand{\subsubsection}{\FloatBarrier\Oldsubsubsection}
 
-
 % Table customization
-
 \definecolor{lightgreen}{RGB}{230, 255, 230}  % Light green color
 \newcommand{\alternatecolors}{%
 	\rowcolors{2}{white}{lightgreen} % Alternate rows between light green and white
 }
+
+\RequirePackage{tabularray}
+\DefTblrTemplate{contfoot-text}{default}{Continúa en la página siguiente}
+\DefTblrTemplate{conthead-text}{default}{(Continuación)}
+\SetTblrInner[longtblr]{
+	rowhead = 1,
+	row{even} = {lightgreen},
+	row{odd} = {white},
+}
+\DefTblrTemplate{caption}{default}{
+	\par\noindent{\bfseries \sffamily Tabla\hspace{0.25em}\thetable}\\
+	\itshape\InsertTblrText{caption}\par
+}
+
+% Name of tables
 \RequirePackage{booktabs}
 \renewcommand{\tablename}{Tabla}
 \addto\captionsspanish{\renewcommand{\tablename}{Tabla}}  % Change "Cuadro" to "Tabla"
 
-
 % Captions for floats
-
-\RequirePackage{caption}
+\RequirePackage[singlelinecheck=off]{caption}
 \captionsetup[table]{
 	format=plain,
 	labelsep=newline,  % Ensures the title is placed below "Tabla 1"
