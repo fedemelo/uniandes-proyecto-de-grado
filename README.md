@@ -8,26 +8,36 @@ La documentación técnica está en inglés, como es convencional.
 
 A Makefile is provided to simplify the compilation process. Prerequisites are `pdflatex`, `bibtex`, and `makeglossaries`. The `latexindent` package is used for code formatting. 
 
-- To compile the thesis from the root directory, use:
-    ```bash
-    make
-    ```
-- To compile the thesis proposal, use:
-    ```bash
-    make proposal
-    ```
--  To format the code, use:
-    ```bash
-    make format
-    ```
+### Compile the Thesis
+To compile the thesis from the root directory, use:
+```bash
+make
+```
 
-    To format a single file, use:
-    ```bash
-    make format FILE=thesis/main.tex
-    ```
-    where `thesis/main.tex` can be replaced with the path to the file you want to format.
+If neither the bibliography nor the glossary were updated, and auxiliary files have already been generated with the previous compilation, a faster content-only compilation can be done with:
+```bash
+make quick
+``` 
 
-- To clean up the temporary files, use:
-    ```bash
-    make clean
-    ```
+To compile the thesis proposal, use `make proposal`.
+
+### Format the Code
+
+To format the code, use:
+```bash
+make format
+```
+
+To format a single file, use:
+```bash
+make format FILE=thesis/main.tex
+```
+where `thesis/main.tex` can be replaced with the path to the file you want to format.
+
+
+### Clean Up
+
+To clean up the temporary files, use:
+```bash
+make clean
+```

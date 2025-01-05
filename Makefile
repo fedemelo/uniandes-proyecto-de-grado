@@ -12,7 +12,7 @@ MAIN_TEX=main.tex
 OUTPUT_DIR=$(THESIS_DIR)
 
 # Rules
-.PHONY: thesis proposal format format-one clean all  # Mark targets as always executed
+.PHONY: thesis quick proposal format format-one clean all  # Mark targets as always executed
 
 thesis:  # Compile the thesis
 	$(TEX) -output-directory=$(THESIS_DIR) $(THESIS_DIR)/$(MAIN_TEX)
@@ -23,6 +23,9 @@ thesis:  # Compile the thesis
 	$(TEX) -output-directory=$(THESIS_DIR) $(THESIS_DIR)/$(MAIN_TEX)
 
 	# Second compilation ensures links, page numbers, and layouts are updated correctly after placeholders are filled
+	$(TEX) -output-directory=$(THESIS_DIR) $(THESIS_DIR)/$(MAIN_TEX)
+
+quick:	# Compile the thesis without generating the bibliography or glossary
 	$(TEX) -output-directory=$(THESIS_DIR) $(THESIS_DIR)/$(MAIN_TEX)
 
 proposal:  # Compile the proposal
