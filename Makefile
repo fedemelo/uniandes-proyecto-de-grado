@@ -43,6 +43,10 @@ clean:  # Remove all temporary files
 	find . -name "*.bak0" -exec rm {} +
 	find . \( -name "*.bbl" -o -name "*.blg" \) -exec rm {} +
 	find . \( -name "*.glg" -o -name "*.glo" -o -name "*.gls" -o -name "*.ist" \) -exec rm {} +
+	find . \( -name "*.fdb_latexmk" -o -name "*.fls" \) -exec rm {} +
 	find . \( -name "*.gz" -o -name "*.lof" -o -name "*.lot" -o -name "*.run.xml" \) -exec rm {} +
+
+clean-all: clean  # Remove all temporary files and the generated pdf
+	find . -name "*.pdf" -exec rm {} +
 
 all: thesis
