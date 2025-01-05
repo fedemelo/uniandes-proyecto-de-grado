@@ -48,12 +48,12 @@
 % Captions for floats
 \RequirePackage{caption}
 \captionsetup[table]{
-  format=plain,           
-  labelsep=newline,  % Ensures the title is placed below "Tabla 1"
-  labelfont={bf,sf},  % "Tabla 1" in bold sans-serif
-  textfont={normalfont,it},  % Title in normal serif and italics
-  justification=raggedright,  % Left-align the caption
-  singlelinecheck=off  % Allow multiline captions without centering each line
+	format=plain,
+	labelsep=newline,  % Ensures the title is placed below "Tabla 1"
+	labelfont={bf,sf},  % "Tabla 1" in bold sans-serif
+	textfont={normalfont,it},  % Title in normal serif and italics
+	justification=raggedright,  % Left-align the caption
+	singlelinecheck=off  % Allow multiline captions without centering each line
 }
 
 
@@ -68,33 +68,33 @@
 % Hyperlinks
 \RequirePackage{hyperref} % Hyperlinks to refs.
 \hypersetup{%
-    colorlinks=false,
-    linkbordercolor={cyan!40!black},% hyperlink borders
-    linkcolor={cyan!40!black}, % Cyan for internal links.
-    citecolor={blue!50!black}, % Blue for external hyperlinks.
-    urlcolor={blue!80!black} % Dark blue for citations.
+	colorlinks=false,
+	linkbordercolor={cyan!40!black},% hyperlink borders
+	linkcolor={cyan!40!black}, % Cyan for internal links.
+	citecolor={blue!50!black}, % Blue for external hyperlinks.
+	urlcolor={blue!80!black} % Dark blue for citations.
 }
 
 
 % Sections
 
 \renewcommand\section{\@startsection{section}{1}{\z@}%
-                       {-6\p@ \@plus -4\p@ \@minus -4\p@}%
-                       {0\p@ \@plus 4\p@ \@minus 4\p@}%
-                       {\normalfont\XIIIPT\bfseries\boldmath
-                        \rightskip=\z@ \@plus 8em\pretolerance=10000 }}
+  {-6\p@ \@plus -4\p@ \@minus -4\p@}%
+  {0\p@ \@plus 4\p@ \@minus 4\p@}%
+  {\normalfont\XIIIPT\bfseries\boldmath
+	  \rightskip=\z@ \@plus 8em\pretolerance=10000 }}
 
 \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
-                       {-6\p@ \@plus -4\p@ \@minus -4\p@}%
-                       {0\p@ \@plus 4\p@ \@minus 4\p@}%
-                       {\normalfont\normalsize\bfseries\boldmath
-                        \rightskip=\z@ \@plus 8em\pretolerance=10000 }}
+	{-6\p@ \@plus -4\p@ \@minus -4\p@}%
+	{0\p@ \@plus 4\p@ \@minus 4\p@}%
+	{\normalfont\normalsize\bfseries\boldmath
+		\rightskip=\z@ \@plus 8em\pretolerance=10000 }}
 
 \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
-                          {-6\p@ \@plus -4\p@ \@minus -4\p@}%
-                          {0\p@ \@plus 4\p@ \@minus 4\p@}%
-                          {\normalfont\normalsize\bfseries\boldmath
-                            \rightskip=\z@ \@plus 8em\pretolerance=10000 }}
+	{-6\p@ \@plus -4\p@ \@minus -4\p@}%
+	{0\p@ \@plus 4\p@ \@minus 4\p@}%
+	{\normalfont\normalsize\bfseries\boldmath
+		\rightskip=\z@ \@plus 8em\pretolerance=10000 }}
 
 \RequirePackage{titlesec}
 \titlelabel{\thetitle.\hspace{1ex}}
@@ -116,19 +116,19 @@
 \def\address#1{\gdef\@address{#1}}
 
 \def\@maketitle{\newpage
- \begin{center}
-\vspace*{-.7cm}
-  {\XVIPT\bf\@title\par}
-   \vglue 6pt plus 3pt minus 3pt
-  {\normalsize
-   \textbf{\begin{tabular}[t]{c}\@author\end{tabular}}\par}
-    \vspace*{-.3cm}
-   {\footnotesize\texttt{\begin{tabular}[t]{c}\@email\end{tabular}}\par}
-   \vglue 6pt plus 3pt minus 3pt
-  {\normalsize
-   \begin{tabular}[t]{c}\inst{\instnum}\@address\end{tabular}\par}
-   \vglue 6pt plus 3pt minus 3pt
-   \end{center}\par
+	\begin{center}
+		\vspace*{-.7cm}
+		{\XVIPT\bf\@title\par}
+		\vglue 6pt plus 3pt minus 3pt
+			{\normalsize
+				\textbf{\begin{tabular}[t]{c}\@author\end{tabular}}\par}
+		\vspace*{-.3cm}
+		{\footnotesize\texttt{\begin{tabular}[t]{c}\@email\end{tabular}}\par}
+		\vglue 6pt plus 3pt minus 3pt
+			{\normalsize
+				\begin{tabular}[t]{c}\inst{\instnum}\@address\end{tabular}\par}
+		\vglue 6pt plus 3pt minus 3pt
+	\end{center}\par
 }
 
 \def\email#1{\gdef\@email{#1}}
@@ -143,7 +143,7 @@
 \RequirePackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhead{}
-\fancyfoot{} 
+\fancyfoot{}
 \fancyhead[OL]{\normalsize \textbf{\thepage} \quad \textcolor{green!50!black}{\(\bullet\)}  \quad \textsf{Propuesta de proyecto de grado} \hbox{  }}
 \fancyhead[OR]{}
 \fancyhead[EL]{}

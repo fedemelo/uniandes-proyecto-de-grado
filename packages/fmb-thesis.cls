@@ -2,7 +2,7 @@
 \ProvidesClass{fmb-thesis}[2024/08/25 LaTeX class for Federico Melo Barrero's capstone undergraduate project.]
 
 % General options
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}} 
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ProcessOptions\relax
 \LoadClass[12pt,letterpaper,twoside]{book}
 
