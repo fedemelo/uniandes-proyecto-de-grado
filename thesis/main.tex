@@ -1,6 +1,6 @@
 \documentclass{fmb-thesis}
 
-\title{Desarrollo del perfil del estudiante\\dentro de No estás solo}
+\title{Desarrollo del Perfil del estudiante\\dentro de No estás solo}
 \author{Federico Melo Barrero\inst{1}}
 \email{f.melo@uniandes.edu.co}
 \address{Universidad de los Andes, Bogotá D.C., Colombia}
@@ -11,21 +11,23 @@
 
 \maketitle
 
-\input{./thesis/chapters/dedicatoria}
+\input{./thesis/chapters/abstract}
+
+\tableofcontents
+\vspace*{\fill}
+
 \input{./thesis/chapters/agradecimientos}
 
 \pagebreak
 \epigraph{\itshape Big Brother is watching you.}{---George Orwell, \textit{Nineteen Eighty-Four}}
 
-\tableofcontents
-\vspace*{\fill}
-
 \pagebreak
 
+\input{./thesis/chapters/introduction}
 \input{./thesis/chapters/datos}
-\input{./thesis/chapters/perfil-estudiante}
-\input{./thesis/chapters/front}
 \input{./thesis/chapters/api}
+\input{./thesis/chapters/front}
+\input{./thesis/chapters/design}
 
 \appendix
 \input{./thesis/chapters/capp}
@@ -33,12 +35,13 @@
 \clearpage
 
 \printglossary
-\addcontentsline{toc}{chapter}{Glossary}  % Add glossary to the table of contents
+\addcontentsline{toc}{chapter}{Glosario}
 
 \clearpage
 
 \bibliographystyle{plain}
-\bibliography{bibliography}
+\bibliography{thesis/biblio}
+\addcontentsline{toc}{chapter}{Bibliografía}
 
 \end{document}
 
