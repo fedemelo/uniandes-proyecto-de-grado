@@ -4,7 +4,7 @@ El presente capítulo se ocupa de la capa de datos de la arquitectura del Perfil
 
 \section{Fuentes de datos}
 
-En aras de que el Perfil del estudiante satisfaga su expectativa como núcleo de información académica y socioeconómica de los estudiantes de la Universidad de los Andes, es necesario que unifique la información que se encuentra dispersa en múltiples sistemas y formatos. En particular, se espera que el Perfil del estudiante sea capaz de reproducir, como mínimo, la información disponible en los sistemas de información académica de la Universidad, como Banner y Advise, así como información en rl sistema de gestión financiera y en el portal de oferta de cursos. La tabla \ref{tab:fuentes_datos} detalla las fuentes de datos cuya información debe ser reproducida por el Perfil del estudiante, incluyendo su nombre formal y una breve descripción de la información que contienen. \cite{advise}
+En aras de que el Perfil del estudiante satisfaga su expectativa como núcleo de información académica y socioeconómica de los estudiantes de la Universidad de los Andes, es necesario que unifique la información que se encuentra dispersa en múltiples sistemas y formatos. En particular, se espera que el Perfil del estudiante sea capaz de reproducir, como mínimo, la información disponible en los sistemas de información académica de la Universidad, como Banner y Advise, así como información en el sistema de gestión financiera y en el portal de oferta de cursos. La tabla \ref{tab:fuentes_datos} detalla las fuentes de datos cuya información debe ser reproducida por el Perfil del estudiante, incluyendo su nombre formal y una breve descripción de la información que contienen.
 
 % TODO: Añadir estos parceros, Banner, Advise, Oferta Cursos, al glosario
 \begin{table}[h]
@@ -25,13 +25,23 @@ En aras de que el Perfil del estudiante satisfaga su expectativa como núcleo de
 \end{table}
 
 % TODO: Añadir Ecosistema de analítica institucional al glosario
-Para el acceso a la información contenida en estas fuentes de datos, la Universidad dispone de un Ecosistema de analítica institucional, cuyo propósito es precisamente facilitar el acceso a la información y la generación de conocimiento a partir de los datos. El Ecosistema tiene entre sus objetivos específicos \say{Entregar los datos con estándares de calidad y seguridad para suplir las necesidades de la Universidad}, \say{Hacer el uso de datos para garantizar una toma de decisiones informada} e \say{Impulsar una cultura de uso de datos en la Universidad}. \cite{ecosistema} El uso del Ecosistema evita tener acceder directamente a las fuentes de datos, lo que simplifica el proceso de extracción de datos y terceriza la responsabilidad de la consistencia de los mismos, al menos en su origen, a la Universidad.
+Para el acceso a la información contenida en estas fuentes de datos, la Universidad dispone de un Ecosistema de analítica institucional, cuyo propósito es precisamente facilitar el acceso a la información y la generación de conocimiento a partir de los datos. El Ecosistema tiene entre sus objetivos específicos \say{Entregar los datos con estándares de calidad y seguridad para suplir las necesidades de la Universidad}, \say{Hacer el uso de datos para garantizar una toma de decisiones informada} e \say{Impulsar una cultura de uso de datos en la Universidad} \cite{ecosistema}. El uso del Ecosistema evita tener acceder directamente a las fuentes de datos, lo que simplifica el proceso de extracción de datos y terceriza la responsabilidad de la consistencia de los mismos, al menos en su origen, a la Universidad. En la subsección \ref{subsec:extraccion} se detalla cómo se realiza la extracción de los datos del Ecosistema.
 
-Como complemento a lo anterior, teniendo en mente la enorme responsabilidad que recae sobre el Ecosistema respecto a la calidad de los datos, que resulta ser un aspecto crítico para que el Ecosistema pueda cumplir con sus objetivos y en efecto ser útil y confiable a las diversas dependencias de la Universidad, se realizó el esfuerzo de registrar en el apéndice \ref{ap:ecosistema} todos los problemas de calidad de los datos que se han encontrado en el Ecosistema y cómo se han abordado.
+Como complemento a lo anterior, teniendo en mente la enorme responsabilidad que recae sobre el Ecosistema respecto a la calidad de los datos, un aspecto crítico para que el Ecosistema pueda cumplir con sus objetivos y en efecto ser útil y confiable para las diversas dependencias de la Universidad, se realizó el esfuerzo de registrar en el apéndice \ref{ap:ecosistema} todos los problemas de calidad de los datos que se han encontrado en el Ecosistema y cómo se han abordado.
 
-%Saltico!
+\section{Proceso de extracción, transformación y carga}
 
-Esa información se encuentra en archivos PARQUET y XLSX almacenados en la nube mediante Microsoft Azure Blob Storage, en diversas cuentas de almacenamiento Azure Storage Account. Para el perfil del estudiante se hace uso de diez de esos archivos, distribuidos en dos cuentas de almacenamiento. Todos los archivos utilizados, junto con su ubicación en cuentas de almacenamiento y directorios, se muestran en la figura \ref{fig:blob_storage}.
+La recuperación y el procesamiento de los datos se realizan mediante un \textit{pipeline} de analítica implementado en cuadernos de \gls{Jupyter} en \gls{Python}, en colaboración con los estudiantes Santiago Martínez Novoa y Manuel Felipe Porras Tascón
+\footnote{Mi más sincero agradecimiento a ambos: a Manuel, en aquel momento estudiante de la Maestría en Ingeniería de la Información, por su valiosa labor al crear y trabajar inicialmente en el cuaderno; y a Santiago, entonces estudiante de Ingeniería de Sistemas y Computación, por tomar la posta, mejorar y mantener este trabajo. Sin ellos, este proyecto no habría sido posible.}.
+El pipeline de analítica realiza las tres etapas clásicas de un proceso de \gls{ETL}: extracción, transformación y carga de los datos. A cada una de estas etapas se le dedica una subsección en las siguientes líneas.
+
+
+\subsection{Extracción de los datos}
+\label{subsec:extraccion}
+
+El proceso de extracción, a alto nivel, consiste de tomar la información relevante del Ecosistema de analítica institucional.
+
+La información del Ecosistema se encuentra almacenada en \gls{Azure Blob Storage}, que es un servicio de almacenamiento de objetos en la nube de Microsoft Azure. Está distribuida en diversas cuentas de almacenamiento, cada una de las cuales contiene archivos en formato PARQUET y XLSX. Para el Perfil del estudiante, se hace uso de diez de esos archivos, distribuidos en dos cuentas de almacenamiento. La figura \ref{fig:blob_storage} muestra la estructura de directorios y archivos en el Blob Storage que contienen la información relevante para el Perfil del estudiante.
 
 \begin{figure}[h]
 	\centering
@@ -40,16 +50,8 @@ Esa información se encuentra en archivos PARQUET y XLSX almacenados en la nube 
 	\label{fig:blob_storage}
 \end{figure}
 
-
-\section{Proceso de extracción, transformación y carga}
-
-La recuperación y el procesamiento de los datos se realizan mediante un \textit{pipeline} de analítica implementado en cuadernos de Jupyter en Python, en colaboración con los estudiantes Santiago Martínez Novoa y Manuel Felipe Porras Tascón\footnote{Mi más sincero agradecimiento a ambos: a Manuel, en aquel momento estudiante de la Maestría en Ingeniería de la Información, por su valiosa labor al crear y trabajar inicialmente en el cuaderno; y a Santiago, entonces estudiante de Ingeniería de Sistemas y Computación, por tomar la posta, mejorar y mantener este trabajo. Sin ellos, este proyecto no habría sido posible.}.
-El pipeline de analítica realiza las tres etapas clásicas de un proceso de \gls{ETL}: extracción, transformación y carga de los datos.
-
-
-\subsubsection{Extracción de los datos}
-
-El proceso de extracción consiste de tomar información determinada de cada uno de los archivos presentados en la figura \ref{fig:blob_storage}. La tabla \ref{tab:extraccion} detalla el orden en el que se realiza cada extracción, describe la información que se extrae y especifica el archivo fuente del cual se obtiene, empleando la numeración de los archivos definida en la figura \ref{fig:blob_storage}.
+Cada uno de los archivos presentados en la figura \ref{fig:blob_storage} se cargan en el cuaderno de Jupyter y 
+se extrae la información relevante para el Perfil del estudiante. La tabla \ref{tab:extraccion} detalla el orden en el que se realiza cada extracción, describe la información que se extrae y especifica el archivo fuente del cual se obtiene, empleando la numeración de los archivos definida en la figura \ref{fig:blob_storage}.
 
 \begin{table}[h]
 	\centering
@@ -72,21 +74,23 @@ El proceso de extracción consiste de tomar información determinada de cada uno
 	\label{tab:extraccion}
 \end{table}
 
-\subsubsection{Transformación de los datos}
+\subsection{Transformación de los datos}
 
-\TODO{Sentarme con Santi a describir la transformación de los datos}
+%TODO: Sentarme con Santi a describir la transformación de los datos
 
-\subsubsection{Carga de los datos}
+\subsection{Carga de los datos}
 
-Como última etapa del procesamiento de los datos, una vez han sido transformados, se cargan en dos archivos en el Blob Storage: uno correspondiente a toda la información relacionada con cada estudiante y otro contiene la información de todas las materias cursadas por cada uno de los estudiantes. La figura \ref{fig:blob_storage_post}, que extiende la figura \ref{fig:blob_storage}, muestra la estructura de directorios y archivos en el Blob Storage tras la carga del par de archivos mencionado.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.7\textwidth]{img/blob_storage_post.jpg}
-	\caption{Archivos y estructura de directorios en Azure Blob Storage tras la carga de los datos. Los archivos cargados están encerrados en un rectángulo redondeado con bordes discontinuos.}
-	\label{fig:blob_storage_post}
-\end{figure}
+%TODO: En este momento lo que pasa es que Santi crea el poco de archivos, me los pasa. Justificación para eso: no caben en memoria, se crean de a pedazos. Yo ahí los proceso con Polars. Cada uno se puede procesar por aparte! Salvo quizás el de estudiantes (mirar esto bien, FKs!) Con eso, quedan en el Postgres del API REST.
 
 \section{Flujo de los datos}
 
-La presente sección se ocupa de ofrecer una visión de alto nivel del flujo que los datos atraviesan desde su origen hasta su destino final en el perfil del estudiante. Es sensato presentar este flujo en este punto del documento, pues ya se han detallado las fuentes de datos y el proceso de extracción, transformación y carga de los datos, que es lo que corresponde a la capa de datos de la arquitectura del Perfil del estudiante. Más aún, esta visión general incluye el paso de los datos por el API REST, que es el siguiente componente de la arquitectura del Perfil del estudiante, al igual que el consumo de los datos por parte del frontend. Por ende, esta sección contextualiza al lector y opera como preámbulo a los próximos capítulos.
+Esta última sección de la capa de datos se ocupa de ofrecer una visión de alto nivel del flujo que los datos atraviesan desde su origen hasta su destino final en el perfil del estudiante. Es sensato presentar este flujo en este punto del documento, pues ya se han detallado las fuentes de datos y el proceso de \gls{ETL}, por lo que se da un abrebocas del paso de los datos por el API REST, que es el siguiente componente de la arquitectura del Perfil del estudiante, y del consumo de los datos por parte del frontend. Por ende, esta sección contextualiza al lector y opera como preámbulo a los próximos capítulos.
+
+La figura \ref{fig:flujo_datos} muestra el flujo de los datos mencionado. Los datos se extraen del Ecosistema de analítica institucional, se transforman y se cargan en el API REST, que a su vez los almacena en una base de datos PostgreSQL. El API REST expone una interfaz de programación que permite a los clientes, como el frontend del Perfil del estudiante, consumir los datos de manera estructurada y segura.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{img/flujo-datos.jpg}
+	\caption{Flujo de los datos, desde su origen en el Ecosistema de analítica institucional hasta su visualización en el frontend del Perfil del estudiante}
+	\label{fig:flujo_datos}
+\end{figure}
