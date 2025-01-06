@@ -4,7 +4,7 @@ export TEXINPUTS
 
 # Variables
 TEX=pdflatex -shell-escape
-BIB=bibtex
+BIB=biber
 GLOSS=makeglossaries
 THESIS_DIR=thesis
 PROPOSAL_DIR=proposal
