@@ -1,6 +1,6 @@
 \chapter{Capa de lógica}
 
-Este capítulo se ocupa de describir la capa de lógica del sistema, que se encarga de procesar los datos extraídos y exponerlos como recursos accesibles mediante una \gls{API REST}. Primeramente, inicia por justificar la construcción de un API REST como interfaz de la capa de lógica. Posteriormente, se detalla por completo el diseño del API, desde dos perspectivas: por un lado, se describe la estructura de los datos y cómo se representan como objetos, en particular como clases, agnósticas de la fuente de los datos y de la implementación de la API; por otro lado, se expone el diseño de la interfaz del API, detallando los recursos que expone, su representación y los endpoints que brinda para acceder a ellos. Finalmente, se dedica una sección a la calidad del código, detallando las herramientas y prácticas empleadas para garantizar la calidad del código.
+Este capítulo se ocupa de describir la capa de lógica del sistema, que se encarga de procesar los datos extraídos y exponerlos como recursos accesibles mediante una \gls{API REST}. Primeramente, inicia por justificar la construcción de un API REST como interfaz de la capa de lógica. Posteriormente, se detalla por completo el diseño del API, desde dos perspectivas: por un lado, se describe la estructura de los datos y cómo se representan como objetos, en particular como clases, agnósticas de la fuente de los datos y de la implementación de la API; por otro lado, se expone el diseño de la interfaz del API, detallando los recursos que expone, su representación y los endpoints que brinda para acceder a ellos. Tras eso, se dedican secciones a la implementación y al despliegue del API, tratando todos los detalles técnicos correspondientes. Finalmente, se dedica una sección a la calidad del código, detallando las herramientas y prácticas empleadas para garantizar la calidad del código.
 
 \section{¿Por qué un API REST?}
 
@@ -130,9 +130,48 @@ La tabla \ref{tab:anotaciones} detalla las anotaciones en el diagrama de clases 
 
 \section{Implementación del API}
 
-\section{Calidad de código}
+Esta sección se ocupa de la implementación del API REST. En particular, se centra en los aspectos técnicos relacionados con el desarrollo del API, incluyendo el lenguaje de programación, el framework y las herramientas asociadas a la implementación.
+% Temas de FastAPI. La configuración de FastAPI. La configuración de Docker. La configuración de GitHub Actions. estructura de carpetas. Uso de FastAPI. Uso de \gls{Pydantic} y \gls{SQLAlchemy}. Postgres.
 
-%TODO: Agradecimiento a Ruby y a Cardozo, la primera mi profesora en Métricas y Calidad de SW; el segundo además profesor mío en Reinforcement Learning
+\subsection{Lenguaje y framework}
+
+El API REST está implementado en Python, utilizando el framework FastAPI. Se dedica un apartado a justificar la elección de cada uno de ellos.
+
+\subsubsection{Python}
+
+Un breve pero excelente resumen de las características del lenguaje se encuentra en la documentación oficial:
+\begin{quote}
+Python es un lenguaje interpretado, interactivo y orientado a objetos. Incorpora módulos, excepciones, tipado dinámico, tipos de datos dinámicos de muy alto nivel y clases. Además de la programación orientada a objetos, admite múltiples paradigmas de programación, como la programación procedural y funcional. Python combina una potencia notable con una sintaxis muy clara. Ofrece interfaces a numerosas llamadas y bibliotecas del sistema, así como a distintos sistemas de ventanas, y es extensible en C o C++. También puede utilizarse como lenguaje de extensión para aplicaciones que requieran una interfaz programable. Finalmente, Python es portátil: se ejecuta en diversas variantes de Unix, incluyendo Linux y macOS, así como en Windows. \cite{python_official_docs}
+\end{quote} % TODO: Solve extra spacing issue
+\noindent Hay muchas buenas razones para usar Python en cualquier proyecto de software, que están bien documentadas en muchísimos recursos; por ejemplo, \cite{learning_python} tiene en su primer capítulo una sección dedicada exclusivamente a las razones por las cuales millones de desarrolladores alrededor del mundo usan el lenguaje. Por ende, no ahondaré en razones técnicas para elegir Python.
+
+La principal justificación para elegir Python para la implementación del API REST es independiente de sus virtudes técnicas, corresponde a restricciones y a preocupaciones por la mantenibilidad del proyecto. En concreto, Python es el principal lenguaje de programación que se enseña en la Universidad. Bajo la estructura curricular actual, en todos los programas de las facultades de Ingeniería, Ciencias y Economía, el curso ISIS-2021: Introducción a la Programación es obligatorio y constituye el primer curso de programación. % TODO: Cita!
+Este curso, que \say{introduce conceptos básicos de programación, utilizados para resolver problemas con un programa de computadora} \cite{ip}, se enseña enteramente en Python. El siguiente curso de programación, ISIS-1225: Estructuras de Datos y Algoritmos, que es obligatorio para los programas de Matemática e Ingeniería de Sistemas y Computación, también se enseña en Python. % TODO: Cita!
+Por lo tanto, la mayoría de los estudiantes de la Universidad que cursan programas del área de STEM tienen experiencia previa en Python y varios no tienen experiencia en ningún otro lenguaje de programación. Esta restricción contextual implicó que la elección de Python para la implementación del API REST fue prácticamente obligatoria.
+
+\subsubsection{FastAPI}
+
+\say{FastAPI es un framework moderno, rápido (de alto rendimiento) y fácil de usar para construir APIs con Python basado en las anotaciones de tipo estándar de Python} \cite{fastapi_docs}. 
+
+La principal justificación para la elección de FastAPI va de la mano con la alta prioridad que se le ha dado a la mantenibilidad del proyecto. Se buscaba un framework que tuviera una curva de aprendizaje corta para desarrolladores familiarizados con Python, que fuera fácil de mantener y extender, y que facilitara construir buena documentación. Sorprendentemente, FastAPI cumple con todos estos requisitos, sin comprometer su rendimiento. De hecho, FastAPI es uno de los frameworks más rápidos para construir APIs con Python, superando a otros frameworks populares como Flask y Django \cite{fastapi_benchmarks}.
+
+Respecto a la facilidad de aprendizaje, la sintaxis FastAPI está basada en las anotaciones de tipo estándar de Python. Esto permite que para cualquier desarrollador que conozca Python, aprender FastAPI es muy sencillo y no requiere aprender sintaxis adicional. \cite{fastapi_functionalities}. Respecto a la mantenibilidad del framework, se destaca su integración con herramientas de validación de datos, como \gls{Pydantic}, que permite definir modelos de datos y validar automáticamente los datos entrantes. Esto facilita mantenimiento en tanto que cualquier cambio en los modelos de datos se refleja automáticamente en la validación de los datos entrantes \cite{fastapi_functionalities}.
+
+Por último, se destaca la integración con herramientas de documentación automática. FastAPI genera automáticamente documentación interactiva de la API REST, que se puede acceder a través de dos rutas: \verb|/docs| y \verb|/redoc|. La primera ruta genera una interfaz interactiva basada en \gls{Swagger}, mientras que la segunda ruta genera una interfaz interactiva basada en \gls{Redoc} \cite{fastapi_functionalities}. Ambas interfaces permiten explorar los recursos del API REST, probarlos y ver la documentación generada automáticamente. Esto facilita enormemente la tarea de mantener el API REST, ya que cualquier cambio en el código se refleja automáticamente en la documentación.
+
+Las razones anteriores hacen de FastAPI una excelente elección para la implementación de cualquier API, y más para este proyecto en particular, considerando las restricciones contextuales enunciadas en la sección anterior.
+
+\subsection{Estructura de directorios}
+
+FastAPI es un framework no opinionado, es decir, que permite al desarrollador elegir cómo estructurar su proyecto. Esto significa que hay una infinidad de formas de estructurar un proyecto de FastAPI. 
+
+Para este proyecto, se propone una estructura de directorios similar a la de varios otros frameworks de desarrollo web. %TODO: Mi arquitectura de FastAPI! Preguntarle a Gepetto a qué otros frameworks se parecen a la mía. Sé que Spring, que fue prácticamente la inspiración.
+
+\section{Despliegue del API}
+
+%TODO
+
+\section{Calidad de código}
 
 Teniendo en cuenta que el software producido es de alto valor para la universidad y por ende probablemente querrá ser mantenido, extendido y reutilizado en el futuro, su desarrollo fue sometido a rigurosos estándares de calidad de código. Esta sección detalla las herramientas y prácticas empleadas para garantizar la calidad del código.
 
@@ -151,12 +190,8 @@ Teniendo en cuenta que el software producido es de alto valor para la universida
 
 Todas las funciones y métodos de la \gls{API} están documentados mediante \glslink{docstring}{\textit{docstrings}}. Naturalmente, los docstrings siguen las convenciones definidas en el estándar \href{https://peps.python.org/pep-0257/}{\gls{PEP} 257}. Más aún, debido a que las disposiciones del estándar son notablemente flexibles, se optó por seguir la afamada convención de docstrings de \gls{NumPy}. Más específicamente, se satisfacen todos los lineamientos de la \href{https://python-sprints.github.io/pandas/guide/pandas_docstring.html}{guía de docstrings de \gls{Pandas}}.
 
-
-
 Su sintaxis satisface el estilo \glslink{reST}{reStructuredText (REST)},
 % TODO: lo cual permite que los docstrings sean procesados por herramientas como \gls{Sphinx}, que genera documentación automáticamente a partir de ellos.
-
-
 
 Se hace uso del linter \gls{Flake8},
 
