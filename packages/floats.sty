@@ -13,9 +13,10 @@
 \renewcommand{\subsubsection}{\FloatBarrier\Oldsubsubsection}
 
 % Table customization
-\definecolor{lightgreen}{RGB}{230, 255, 230}  % Light green color
+\definecolor{sagegreen}{RGB}{204, 229, 204}
+
 \newcommand{\alternatecolors}{%
-	\rowcolors{2}{white}{lightgreen} % Alternate rows between light green and white
+	\rowcolors{2}{white}{sagegreen} % Alternate rows between light green and white
 }
 
 \RequirePackage{tabularray}
@@ -23,7 +24,7 @@
 \DefTblrTemplate{conthead-text}{default}{(Continuación)}
 \SetTblrInner[longtblr]{
 	rowhead = 1,
-	row{even} = {lightgreen},
+	row{even} = {sagegreen},
 	row{odd} = {white},
 }
 \DefTblrTemplate{caption}{default}{
