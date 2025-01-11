@@ -18,7 +18,7 @@
 
 % Glossary
 \RequirePackage{glossaries}
-\RequirePackage{glossary}
+\RequirePackage{glossary/glossary}
 
 % Bibliography
 \RequirePackage[backend=biber,style=numeric]{biblatex}

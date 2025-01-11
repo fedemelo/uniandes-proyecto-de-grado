@@ -1,0 +1,41 @@
+\ProvidesPackage{glossary}[2025/01/11 Package for glossary entries]
+\RequirePackage{glossaries}
+\makeglossaries
+
+\input{thesis/glossary/code-quality}
+\input{thesis/glossary/fastapi}
+\input{thesis/glossary/git}
+\input{thesis/glossary/python}
+\input{thesis/glossary/uniandes}
+\input{thesis/glossary/web}
+
+% Data
+
+\newglossaryentry{ETL}{
+	text={ETL},
+	name={ETL (\textit{Extract, Transform, Load})},
+	description={Proceso utilizado en la integración de datos, que consiste en extraer datos de múltiples fuentes, realizar sobre ellos las transformaciones necesarias y cargarlos en un destino}
+}
+
+\newglossaryentry{pipeline}{
+	name={pipeline},
+	description={Flujo de automatización en el que se definen una serie de pasos o tareas que deben ejecutarse de manera secuencial o en paralelo}
+}
+
+\newglossaryentry{UML}{
+	text={UML},
+	name={UML (\textit{Unified Modeling Language})},
+	description={Lenguaje unificado de modelado, un lenguaje estándar para visualizar, especificar, construir y documentar los artefactos de un sistema de software}
+}
+
+\newglossaryentry{Markdown}{
+	name={Markdown},
+	description={Lenguaje de marcado ligero que se convierte en HTML y se utiliza comúnmente para escribir documentación en repositorios de código fuente.}
+}
+
+\newglossaryentry{BLOB}{
+	text={BLOB},
+	name={BLOB (\textit{Binary Large OBject})},
+	description={Gran objeto binario, un tipo de dato que se utiliza para almacenar cualquier tipo de información binaria, usualmente de gran tamaño, como imágenes, videos o archivos}
+}
+
