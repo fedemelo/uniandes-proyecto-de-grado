@@ -1,44 +1,44 @@
 \chapter{Capa de lógica}
 
-Este capítulo se ocupa de describir la capa de lógica del sistema, que se encarga de procesar los datos extraídos y exponerlos como recursos accesibles mediante una \gls{API REST}. Primeramente, inicia por justificar la construcción de un API REST como interfaz de la capa de lógica. Posteriormente, se detalla por completo el diseño del API, desde dos perspectivas: por un lado, se describe la estructura de los datos y cómo se representan como objetos, en particular como clases, agnósticas de la fuente de los datos y de la implementación de la API; por otro lado, se expone el diseño de la interfaz del API, detallando los recursos que expone, su representación y los endpoints que brinda para acceder a ellos. Tras eso, se dedican secciones a la implementación y al despliegue del API, tratando todos los detalles técnicos correspondientes. Finalmente, se dedica una sección a la calidad del código, detallando las herramientas y prácticas empleadas para garantizar la calidad del código.
+Este capítulo se ocupa de describir la capa de lógica del sistema, que se encarga de procesar los datos extraídos y exponerlos como recursos accesibles mediante una \gls{API REST}. Primeramente, inicia por justificar la construcción de un \gls{API REST} como interfaz de la capa de lógica. Posteriormente, se detalla por completo el diseño del \gls{API}, desde dos perspectivas: por un lado, se describe la estructura de los datos y cómo se representan como objetos, en particular como clases, agnósticas de la fuente de los datos y de la implementación del \gls{API}; por otro lado, se expone el diseño de la interfaz del \gls{API}, detallando los recursos que expone, su representación y los endpoints que brinda para acceder a ellos. Tras eso, se dedican secciones a la implementación y al despliegue del \gls{API}, tratando todos los detalles técnicos correspondientes. Finalmente, se dedica una sección a la calidad del código, detallando las herramientas y prácticas empleadas para garantizar la calidad del código.
 
 \section{¿Por qué un API REST?}
 
-Antes de entrar en detalles sobre el diseño del API, es importante justificar la elección de un API REST como interfaz de la capa de lógica del sistema. En primer lugar, un API REST es una interfaz de programación de aplicaciones que sigue los principios del estilo arquitectónico \gls{REST}. Este estilo se basa en la transferencia de representaciones de recursos, que son identificados por \glslink{URI}{URIs}, y la manipulación de estos recursos mediante métodos estándar de \gls{HTTP}. En particular, un API REST es una interfaz que permite la interoperabilidad de aplicaciones heterogéneas, permitiendo a un programa acceder a las funciones y datos de otro. En el caso de este proyecto, un API REST es la interfaz ideal para exponer los datos procesados por la capa de lógica, ya que permite a cualquier aplicación, como el frontend del perfil del estudiante, acceder a estos datos de manera sencilla y eficiente.
+Antes de entrar en detalles sobre el diseño del \gls{API}, es importante justificar la elección de un \gls{API REST} como interfaz de la capa de lógica del sistema. En primer lugar, un \gls{API REST} es una interfaz de programación de aplicaciones que sigue los principios del estilo arquitectónico \gls{REST}. Este estilo se basa en la transferencia de representaciones de recursos, que son identificados por \glslink{URI}{URIs}, y la manipulación de estos recursos mediante métodos estándar de \gls{HTTP}. En particular, un \gls{API REST} es una interfaz que permite la interoperabilidad de aplicaciones heterogéneas, permitiendo a un programa acceder a las funciones y datos de otro. En el caso de este proyecto, un \gls{API REST} es la interfaz ideal para exponer los datos procesados por la capa de lógica, ya que permite a cualquier aplicación, como el frontend del perfil del estudiante, acceder a estos datos de manera sencilla y eficiente.
 
-En los últimos años, los API REST han ganado popularidad en el desarrollo de aplicaciones web, ya que son fáciles de entender, escalables y flexibles. Además, un API REST es independiente de la implementación subyacente, lo que significa que el frontend del perfil del estudiante no necesita conocer los detalles de cómo se procesan los datos o cómo se almacenan, sino que solo necesita conocer la interfaz del API. Por último, un API REST es fácil de probar y depurar, ya que se basa en estándares abiertos y bien conocidos, como \gls{HTTP} y \gls{JSON}.
+En los últimos años, los \gls{API REST} han ganado popularidad en el desarrollo de aplicaciones web, ya que son fáciles de entender, escalables y flexibles. Además, un \gls{API REST} es independiente de la implementación subyacente, lo que significa que el frontend del perfil del estudiante no necesita conocer los detalles de cómo se procesan los datos o cómo se almacenan, sino que solo necesita conocer la interfaz del \gls{API}. Por último, un \gls{API REST} es fácil de probar y depurar, ya que se basa en estándares abiertos y bien conocidos, como \gls{HTTP} y \gls{JSON}.
 
-Todo esto hace que un API REST sea la elección ideal para la capa de lógica de este sistema, ya que permite exponer los datos procesados de manera sencilla y eficiente, independiente de la implementación subyacente, y fácil de probar y depurar.
+Todo esto hace que un \gls{API REST} sea la elección ideal para la capa de lógica de este sistema, ya que permite exponer los datos procesados de manera sencilla y eficiente, independiente de la implementación subyacente, y fácil de probar y depurar.
 
 \section{Diseño del API}
 
-El diseño del API se divide en dos partes. La primera parte está en el marco de la programación orientada a objetos, y se encarga de describir cuál es la estructura de clases del API: qué clases existen, cómo se relacionan entre sí y qué atributos tienen. La segunda parte se enfoca en la interfaz del API, es decir, en cómo se exponen los datos procesados como recursos accesibles mediante una API REST. Eso incluye cuáles son los recursos que se exponen, cómo se representan, en qué formato se devuelven al cliente y cuáles son los endpoints que brinda el API para acceder a estos recursos.
+El diseño del \gls{API} se divide en dos partes. La primera parte está en el marco de la programación orientada a objetos, y se encarga de describir cuál es la estructura de clases del \gls{API}: qué clases existen, cómo se relacionan entre sí y qué atributos tienen. La segunda parte se enfoca en la interfaz del \gls{API}, es decir, en cómo se exponen los datos procesados como recursos accesibles mediante una \gls{API REST}. Eso incluye cuáles son los recursos que se exponen, cómo se representan, en qué formato se devuelven al cliente y cuáles son los endpoints que brinda el \gls{API} para acceder a estos recursos.
 
-Es importante señalar que el diseño del API es completamente independiente de dos factores: por un lado, de la fuente de los datos, es decir, de cómo se extraen los datos de las fuentes originales; por otro lado, de la implementación del API, es decir, de qué lenguaje y cuál framework se utiliza para escribir el código del API. En este sentido, esta sección es independiente del capítulo anterior, que estudia la capa de datos, y de la sección siguiente, que explica la implementación del API.
+Es importante señalar que el diseño del \gls{API} es completamente independiente de dos factores: por un lado, de la fuente de los datos, es decir, de cómo se extraen los datos de las fuentes originales; por otro lado, de la implementación del \gls{API}, es decir, de qué lenguaje y cuál framework se utiliza para escribir el código del \gls{API}. En este sentido, esta sección es independiente del capítulo anterior, que estudia la capa de datos, y de la sección siguiente, que explica la implementación del \gls{API}.
 
 \subsection{Estructura de clases del API}
 
-Para modelar la información del Perfil del estudiante como objetos se optó por realizar un diagrama de clases conforme al estándar \gls{UML}. Esto tiene la ventaja de que permite visualizar de manera clara y concisa la estructura de clases del API y de que es un artefacto bien conocido y ampliamente utilizado en el desarrollo de software.
+Para modelar la información del Perfil del estudiante como objetos se optó por realizar un diagrama de clases conforme al estándar \gls{UML}. Esto tiene la ventaja de que permite visualizar de manera clara y concisa la estructura de clases del \gls{API} y de que es un artefacto bien conocido y ampliamente utilizado en el desarrollo de software.
 
 \subsubsection{Diagrama de clases}
 
-Se realizaron varias iteraciones en la construcción del diagrama de clases, teniendo en cuenta las necesidades del frontend del perfil del estudiante y las restricciones de la capa de datos. La figura \ref{fig:diagrama_clases} muestra el diagrama de clases final del API.
+Se realizaron varias iteraciones en la construcción del diagrama de clases, teniendo en cuenta las necesidades del frontend del perfil del estudiante y las restricciones de la capa de datos. La figura \ref{fig:diagrama_clases} muestra el diagrama de clases final del \gls{API}.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{img/diagrama-clases.jpg}
-	\caption{Diagrama de clases del API}
+	\caption{Diagrama de clases del \gls{API}}
 	\label{fig:diagrama_clases}
 \end{figure}
 
-El diagrama de clases está escrito en inglés, siguiendo las convenciones de UML. Cada clase tiene un nombre, que es un sustantivo en singular, y una serie de atributos. Los atributos están escritos en el formato \texttt{nombre: tipo}, donde \texttt{nombre} es el nombre del atributo y \texttt{tipo} es el tipo de dato del atributo. Por conveniencia, los tipos de datos empleados son los mismos que se utilizan en el lenguaje de programación Python, que es el lenguaje en el que se implementa el API, pero bien podrían usarse los tipos de datos de cualquier otro lenguaje de programación orientado a objetos sin afectar semánticamente el diagrama de clases, por lo que mantiene su independencia de la implementación.
+El diagrama de clases está escrito en inglés, siguiendo las convenciones de \gls{UML}. Cada clase tiene un nombre, que es un sustantivo en singular, y una serie de atributos. Los atributos están escritos en el formato \texttt{nombre: tipo}, donde \texttt{nombre} es el nombre del atributo y \texttt{tipo} es el tipo de dato del atributo. Por conveniencia, los tipos de datos empleados son los mismos que se utilizan en el lenguaje de programación \gls{Python}, que es el lenguaje en el que se implementa el \gls{API}, pero bien podrían usarse los tipos de datos de cualquier otro lenguaje de programación orientado a objetos sin afectar semánticamente el diagrama de clases, por lo que mantiene su independencia de la implementación.
 
 \subsubsection{Clases del API}
 
-La estructura de clases del API se basa en el principio de responsabilidad única, que establece que cada clase debe tener una sola responsabilidad y representar un solo concepto en el dominio del problema. Las clases propuestas en el diagrama se presentan alfabetizadas en la tabla \ref{tab:clases}, con su nombre original en inglés, la traducción al español y una breve descripción de su responsabilidad.
+La estructura de clases del \gls{API} se basa en el principio de responsabilidad única, que establece que cada clase debe tener una sola responsabilidad y representar un solo concepto en el dominio del problema. Las clases propuestas en el diagrama se presentan alfabetizadas en la tabla \ref{tab:clases}, con su nombre original en inglés, la traducción al español y una breve descripción de su responsabilidad.
 
 \begin{longtblr}[
-		caption = {Clases del API y sus responsabilidades},
+		caption = {Clases del \gls{API} y sus responsabilidades},
 		label = {tab:clases},
 	]{
 		colspec = {X[1,l] X[1,l] X[2,l]}
@@ -124,54 +124,169 @@ La tabla \ref{tab:anotaciones} detalla las anotaciones en el diagrama de clases 
 	\hline
 \end{longtblr}
 
-\subsection{Diseño de la interfaz del API}
+\subsection{Diseño de la interfaz del \gls{API}}
 
 % TODO: Acá va qué recursos son, la representación, el formato, los endpoints, etc.
 
 \section{Implementación del API}
 
-Esta sección se ocupa de la implementación del API REST. En particular, se centra en los aspectos técnicos relacionados con el desarrollo del API, incluyendo el lenguaje de programación, el framework y las herramientas asociadas a la implementación.
-% Temas de FastAPI. La configuración de FastAPI. La configuración de Docker. La configuración de GitHub Actions. estructura de carpetas. Uso de FastAPI. Uso de \gls{Pydantic} y \gls{SQLAlchemy}. Postgres.
+Esta sección se ocupa de la implementación del \gls{API REST}. En particular, se centra en los aspectos técnicos relacionados con el desarrollo del \gls{API}, incluyendo el lenguaje de programación, el framework y las herramientas asociadas a la implementación.
 
 \subsection{Lenguaje y framework}
 
-El API REST está implementado en Python, utilizando el framework FastAPI. Se dedica un apartado a justificar la elección de cada uno de ellos.
+El \gls{API REST} está implementado en \gls{Python}, utilizando el framework \gls{FastAPI}. Se dedica un apartado a justificar la elección de cada uno de ellos.
 
 \subsubsection{Python}
 
 Un breve pero excelente resumen de las características del lenguaje se encuentra en la documentación oficial:
 \begin{quote}
-	Python es un lenguaje interpretado, interactivo y orientado a objetos. Incorpora módulos, excepciones, tipado dinámico, tipos de datos dinámicos de muy alto nivel y clases. Además de la programación orientada a objetos, admite múltiples paradigmas de programación, como la programación procedural y funcional. Python combina una potencia notable con una sintaxis muy clara. Ofrece interfaces a numerosas llamadas y bibliotecas del sistema, así como a distintos sistemas de ventanas, y es extensible en C o C++. También puede utilizarse como lenguaje de extensión para aplicaciones que requieran una interfaz programable. Finalmente, Python es portátil: se ejecuta en diversas variantes de Unix, incluyendo Linux y macOS, así como en Windows. \cite{python_official_docs}
+	\gls{Python} es un lenguaje interpretado, interactivo y orientado a objetos. Incorpora módulos, excepciones, tipado dinámico, tipos de datos dinámicos de muy alto nivel y clases. Además de la programación orientada a objetos, admite múltiples paradigmas de programación, como la programación procedural y funcional. \gls{Python} combina una potencia notable con una sintaxis muy clara. Ofrece interfaces a numerosas llamadas y bibliotecas del sistema, así como a distintos sistemas de ventanas, y es extensible en C o C++. También puede utilizarse como lenguaje de extensión para aplicaciones que requieran una interfaz programable. Finalmente, \gls{Python} es portátil: se ejecuta en diversas variantes de Unix, incluyendo Linux y macOS, así como en Windows. \cite{python_official_docs}
 \end{quote} % TODO: Solve extra spacing issue
-\noindent Hay muchas buenas razones para usar Python en cualquier proyecto de software, que están bien documentadas en muchísimos recursos; por ejemplo, \cite{learning_python} tiene en su primer capítulo una sección dedicada exclusivamente a las razones por las cuales millones de desarrolladores alrededor del mundo usan el lenguaje. Por ende, no ahondaré en razones técnicas para elegir Python.
+\noindent Hay muchas buenas razones para usar \gls{Python} en cualquier proyecto de software, que están bien documentadas en muchísimos recursos; por ejemplo, \cite{learning_python} tiene en su primer capítulo una sección dedicada exclusivamente a las razones por las cuales millones de desarrolladores alrededor del mundo usan el lenguaje. Por ende, no ahondaré en razones técnicas para elegir \gls{Python}.
 
-La principal justificación para elegir Python para la implementación del API REST es independiente de sus virtudes técnicas, corresponde a restricciones y a preocupaciones por la mantenibilidad del proyecto. En concreto, Python es el principal lenguaje de programación que se enseña en la Universidad. Bajo la estructura curricular actual, en todos los programas de las facultades de Ingeniería, Ciencias y Economía, el curso ISIS-2021: Introducción a la Programación es obligatorio y constituye el primer curso de programación. % TODO: Cita!
-Este curso, que \say{introduce conceptos básicos de programación, utilizados para resolver problemas con un programa de computadora} \cite{ip}, se enseña enteramente en Python. El siguiente curso de programación, ISIS-1225: Estructuras de Datos y Algoritmos, que es obligatorio para los programas de Matemática e Ingeniería de Sistemas y Computación, también se enseña en Python. % TODO: Cita!
-Por lo tanto, la mayoría de los estudiantes de la Universidad que cursan programas del área de STEM tienen experiencia previa en Python y varios no tienen experiencia en ningún otro lenguaje de programación. Esta restricción contextual implicó que la elección de Python para la implementación del API REST fue prácticamente obligatoria.
+La principal justificación para elegir \gls{Python} para la implementación del \gls{API REST} es independiente de sus virtudes técnicas, corresponde a restricciones y a preocupaciones por la mantenibilidad del proyecto. En concreto, \gls{Python} es el principal lenguaje de programación que se enseña en la Universidad. Bajo la estructura curricular actual, en todos los programas de las facultades de Ingeniería, Ciencias y Economía, el curso ISIS-2021: Introducción a la Programación es obligatorio y constituye el primer curso de programación. % TODO: Cita!
+Este curso, que \say{introduce conceptos básicos de programación, utilizados para resolver problemas con un programa de computadora} \cite{ip}, se enseña enteramente en \gls{Python}. El siguiente curso de programación, ISIS-1225: Estructuras de Datos y Algoritmos, que es obligatorio para los programas de Matemática e Ingeniería de Sistemas y Computación, también se enseña en \gls{Python}. % TODO: Cita!
+Por lo tanto, la mayoría de los estudiantes de la Universidad que cursan programas del área de STEM tienen experiencia previa en \gls{Python} y varios no tienen experiencia en ningún otro lenguaje de programación. Esta restricción contextual implicó que la elección de \gls{Python} para la implementación del \gls{API REST} fue prácticamente obligatoria.
 
 \subsubsection{FastAPI}
 
-\say{FastAPI es un framework moderno, rápido (de alto rendimiento) y fácil de usar para construir APIs con Python basado en las anotaciones de tipo estándar de Python} \cite{fastapi_docs}.
+\say{\gls{FastAPI} es un framework moderno, rápido (de alto rendimiento) y fácil de usar para construir \glslink{API}{APIs} con \gls{Python} basado en las anotaciones de tipo estándar de \gls{Python}} \cite{fastapi_docs}.
 
-La principal justificación para la elección de FastAPI va de la mano con la alta prioridad que se le ha dado a la mantenibilidad del proyecto. Se buscaba un framework que tuviera una curva de aprendizaje corta para desarrolladores familiarizados con Python, que fuera fácil de mantener y extender, y que facilitara construir buena documentación. Sorprendentemente, FastAPI cumple con todos estos requisitos, sin comprometer su rendimiento. De hecho, FastAPI es uno de los frameworks más rápidos para construir APIs con Python, superando a otros frameworks populares como Flask y Django \cite{fastapi_benchmarks}.
+La principal justificación para la elección de \gls{FastAPI} va de la mano con la alta prioridad que se le ha dado a la mantenibilidad del proyecto. Se buscaba un framework que tuviera una curva de aprendizaje corta para desarrolladores familiarizados con \gls{Python}, que fuera fácil de mantener y extender, y que facilitara construir buena documentación. Sorprendentemente, \gls{FastAPI} cumple con todos estos requisitos, sin comprometer su rendimiento. De hecho, \gls{FastAPI} es uno de los frameworks más rápidos para construir \glslink{API}{APIs} con \gls{Python}, superando a otros frameworks populares como Flask y Django \cite{fastapi_benchmarks}.
 
-Respecto a la facilidad de aprendizaje, la sintaxis FastAPI está basada en las anotaciones de tipo estándar de Python. Esto permite que para cualquier desarrollador que conozca Python, aprender FastAPI es muy sencillo y no requiere aprender sintaxis adicional. \cite{fastapi_features}. Respecto a la mantenibilidad del framework, se destaca su integración con herramientas de validación de datos, como \gls{Pydantic}, que permite definir modelos de datos y validar automáticamente los datos entrantes. Esto facilita mantenimiento en tanto que cualquier cambio en los modelos de datos se refleja automáticamente en la validación de los datos entrantes \cite{fastapi_features}.
+Respecto a la facilidad de aprendizaje, la sintaxis \gls{FastAPI} está basada en las anotaciones de tipo estándar de \gls{Python}. Esto permite que para cualquier desarrollador que conozca \gls{Python}, aprender \gls{FastAPI} es muy sencillo y no requiere aprender sintaxis adicional. \cite{fastapi_features}. Respecto a la mantenibilidad del framework, se destaca su integración con herramientas de validación de datos, como \gls{Pydantic}, que permite definir modelos de datos y validar automáticamente los datos entrantes. Esto facilita mantenimiento en tanto que cualquier cambio en los modelos de datos se refleja automáticamente en la validación de los datos entrantes \cite{fastapi_features}.
 
-Por último, se destaca la integración con herramientas de documentación automática. FastAPI genera automáticamente documentación interactiva de la API REST, que se puede acceder a través de dos rutas: \verb|/docs| y \verb|/redoc|. La primera ruta genera una interfaz interactiva basada en \gls{Swagger}, mientras que la segunda ruta genera una interfaz interactiva basada en \gls{Redoc} \cite{fastapi_features}. Ambas interfaces permiten explorar los recursos del API REST, probarlos y ver la documentación generada automáticamente. Esto facilita enormemente la tarea de mantener el API REST, ya que cualquier cambio en el código se refleja automáticamente en la documentación.
+Por último, se destaca la integración con herramientas de documentación automática. \gls{FastAPI} genera automáticamente documentación interactiva de la \gls{API REST}, que se puede acceder a través de dos rutas: \verb|/docs| y \verb|/redoc|. La primera ruta genera una interfaz interactiva basada en \gls{Swagger}, mientras que la segunda ruta genera una interfaz interactiva basada en \gls{Redoc} \cite{fastapi_features}. Ambas interfaces permiten explorar los recursos del \gls{API REST}, probarlos y ver la documentación generada automáticamente. Esto facilita enormemente la tarea de mantener el \gls{API REST}, ya que cualquier cambio en el código se refleja automáticamente en la documentación.
 
-Las razones anteriores hacen de FastAPI una excelente elección para la implementación de cualquier API, y más para este proyecto en particular, considerando las restricciones contextuales enunciadas en la sección anterior.
+Las razones anteriores hacen de \gls{FastAPI} una excelente elección para la implementación de cualquier \gls{API}, y más para este proyecto en particular, considerando las restricciones contextuales enunciadas en la sección anterior.
 
 \subsection{Estructura de directorios}
 
-FastAPI es un framework no opinionado, es decir, que permite al desarrollador elegir cómo estructurar su proyecto. Esto significa que hay una infinidad de formas de estructurar un proyecto de FastAPI.
+\gls{FastAPI} es un framework no opinionado, es decir, que permite al desarrollador elegir cómo estructurar su proyecto. Esto significa que hay una infinidad de formas de estructurar un proyecto de \gls{FastAPI}. La siguiente fue la estructura de directorios elegida para este proyecto:
+\begin{itemize}
+	\item \texttt{README.md}
+	\item \texttt{app.log}
+	\item \texttt{db/}
+	\item \texttt{.env}
+	\item \texttt{dev.log}
+	\item \texttt{requirements.txt}
+	\item \texttt{sonar-project.properties}
+	\item \texttt{src/}
+	\begin{itemize}
+			\item \texttt{\_\_init\_\_.py}
+			\item \texttt{main.py}
+			\item \texttt{authentication/}
+			\item \texttt{azure\_interface/}
+			\item \texttt{config/}
+			\item \texttt{constants/}
+			\item \texttt{files/}
+			\item \texttt{models/}
+			\item \texttt{persist\_from\_blobs/}
+			\item \texttt{routers/}
+			\item \texttt{schemas/}
+			\item \texttt{services/}
+			\item \texttt{utils/}
+	\end{itemize}
+	\item \texttt{tests/}
+\end{itemize}
 
-Para este proyecto, se propone una estructura de directorios similar a la de varios otros frameworks de desarrollo web. %TODO: Mi arquitectura de FastAPI! Preguntarle a Gepetto a qué otros frameworks se parecen a la mía. Sé que Spring, que fue prácticamente la inspiración.
+Nótese que no se reflejan todos los archivos y directorios del proyecto, sino únicamente aquellos que son relevantes para la estructura de código del \gls{API REST}. La tabla \ref{tab:estructura_directorios} detalla la función de cada directorio y archivo en el directorio raíz del proyecto.
 
-\section{Despliegue del API}
+\begin{longtblr}[
+		caption = {Estructura de archivos y directorios del proyecto},
+		label = {tab:estructura_directorios},
+	]{
+		colspec = {X[1,l] X[3,l]},
+	}
+	\hline
+	\textbf{Directorio/Archivo} & \textbf{Descripción}
+	\\
+	\hline
+	\texttt{README.md} & Archivo con documentación fundamental del proyecto, en concreto una breve descripción e instrucciones de ejecución del proyecto en un ambiente local. Está escrito en \gls{Markdown}, que es un lenguaje de marcado ligero, es decir, que permite dar formato al texto de forma sencilla. \\
+	\texttt{app.log} & Archivo de registro (\textit{log}) generado automáticamente en el que se almacena información como errores, advertencias y notificaciones generadas durante la ejecución de la aplicación. El archivo \texttt{app.log} corresponde al entorno de producción; en el entorno de desarrollo se genera el archivo \texttt{dev.log}, cuyo propósito es análogo. Se ahonda en el uso de este archivo en la sección \ref{sec:despliegue_api} \\
+	\texttt{db/} & Directorio que almacena scripts relacionados con respaldos y restauración de la base de datos, además de otros archivos necesarios para la gestión de datos persistentes. \\
+	\texttt{.env} & Archivo de configuración que almacena variables de entorno. Estas variables permiten definir valores sensibles o específicos del entorno, como credenciales, configuraciones de la base de datos, claves o modos de ejecución (desarrollo, pruebas, producción), sin incluirlos directamente en el código fuente. El archivo no se incluuye en el control de versiones por contener información sensible, pero en el README se incluyen instrucciones para construirlo, mientras se cuente con las credenciales necesarias. \\
+	\texttt{sonar-project}\newline\texttt{.properties} & Archivo de configuración para \gls{SonarQube}. El uso del archivo y de \gls{SonarQube} se explica en la sección \ref{sec:calidad_codigo}. \\
+	\texttt{src/} & Directorio principal que contiene el código fuente del proyecto. Su nombre es una abreviación convencional para \textit{source}, que en inglés significa \textit{fuente}. \\
+	\texttt{tests/} & Directorio que contiene las \gls{pruebas unitarias} del proyecto. Se ahonda en las \gls{pruebas unitarias} en la sección \ref{sec:calidad_codigo}. \\
+	\hline
+\end{longtblr}
 
-%TODO
+Como complemento a la tabla \ref{tab:estructura_directorios}, la tabla \ref{tab:estructura_directorios_src} especifica la función de cada directorio y archivo dentro del directorio \texttt{src/}.
+
+\begin{longtblr}[
+	caption = {Estructura de archivos y directorios dentro de \texttt{src/}},
+	label = {tab:estructura_directorios_src},
+]{
+	colspec = {X[1,l] X[3,l]},
+}
+\hline
+\textbf{Directorio/Archivo} & \textbf{Descripción}
+\\
+\hline
+	\texttt{\_\_init\_\_.py} & Archivo vacío cuyo nombre indica que el directorio es un paquete en \gls{Python}. \\
+	\texttt{main.py} & Punto de entrada de la aplicación. Contiene la configuración del objeto \texttt{\gls{FastAPI}}, que es la instancia principal de la aplicación, la importación e inicialización de las rutas y la configuración de los \textit{\glslink{middleware}{middlewares}}. \\
+	\texttt{authentication/} & Módulo que gestiona la autenticación y autorización de usuarios en el proyecto. \\
+	\texttt{azure\_interface/} & Módulo que contiene la lógica para interactuar con servicios de Azure. \\
+	\texttt{config/} & Módulo que almacena configuraciones del proyecto y de su interacción con la base de datos. \\
+	\texttt{constants/} & Módulo que define constantes compartidas utilizadas en el proyecto. \\
+	\texttt{files/} & Directorio que almacena archivos estáticos o temporales necesarios para el proyecto. \\
+	\texttt{models/} & Módulo en el que se definen las clases que representan las tablas de la base de datos, apalancándose de \gls{SQLAlchemy}, que actúa como \gls{ORM}. \\
+	\texttt{persist\_from\_blobs/} & Módulo encargado de la persistencia de datos provenientes de \gls{BLOB}s o almacenamiento de objetos. \\
+	\texttt{routers/} & Módulo que define las rutas del \gls{API REST}, organizando los puntos de entrada según su funcionalidad. \\
+	\texttt{schemas/} & Módulo que define los esquemas de datos utilizados en el \gls{API REST}, como las estructuras para solicitudes y respuestas.\\
+	\texttt{services/} & Módulo que implementa las operaciones que es posible realizar sobre los recursos del API con base en la lógica de negocio del proyecto. \\
+	\texttt{utils/} & Módulo que agrupa funciones auxiliares utilizadas en diferentes partes del proyecto.\\
+\hline
+\end{longtblr}
+
+Vale la pena ahondar en cuatro de los directorios mencionados arriba, que constituyen el esqueleto de cualquier \gls{API}: \texttt{models}, que constituye el modelo de datos del \gls{API}; \texttt{schemas}, que define los esquemas de datos utilizados en las solicitudes y respuestas del \gls{API}; \texttt{services}, que contiene la lógica de negocio del proyecto; y \texttt{routers}, que define las rutas del \gls{API REST}. Se dedica un apartado a cada uno de ellos.
+
+\subsection{Modelos de datos}
+
+El módulo \texttt{models} contiene las clases que representan las tablas de la base de datos. En particular, cada archivo de \gls{Python} en el directorio \texttt{models} define una clase que abstrae la estructura de una de las tablas de la base de datos relacional. La mayoría de los atributos de la clase corresponden a las columnas de la tabla y algunos atributos especiales definen las relaciones entre las tablas y las restricciones de integridad. Por ejemplo, la clase \texttt{Student} en el archivo \texttt{models/student.py} representa la tabla \texttt{students} en la base de datos.
+
+Esta abstracción, en la que el modelo de datos relacional se representa como un modelo de objetos, es una tarea común en el desarrollo de software en lenguajes orientados a objetos y convencionalmente se realiza siguiendo el patrón \gls{ORM} (\textit{Object-Relational Mapper}). Dicho patrón permite representar objetos como tablas en una base de datos relacional y viceversa, a pesar de la diferencia en las estructuras orientada a objetos y relacional (problema conocido como \textit{impedancia de mapeo}, en inglés \textit{object-relational impedance mismatch}). En este proyecto, la librería \gls{SQLAlchemy} encapsula la lógica de mapeo objeto-relacional, permitiendo que las clases de \gls{Python} se mapeen directamente a tablas de la base de datos relacional. El lector puede ser familiar con otros \glslink{ORM}{ORMs}, como JPA (\textit{Java Persistence API}) en Java o \textit{Entity Framework} en C\#, que cumplen una función análoga.
+
+\subsection{Esquemas de datos}
+\label{subsec:schemas}
+
+El módulo \texttt{schemas} define las clases que representan los esquemas de datos utilizados en las solicitudes y respuestas del \gls{API}. Estas clases están implementadas utilizando \gls{Pydantic}, una librería que provee validación de datos y la generación automática de documentación para los modelos. Todas las clases correspondientes a una entidad específica se definen en un solo archivo, de manera que en el archivo \texttt{schemas/student.py} se definen las clases que representan los esquemas de datos de la entidad \texttt{Student}.
+
+En general, los esquemas de datos son una abstracción que permite definir la estructura de los datos que se envían y reciben en el \gls{API}, y que facilita la validación de los datos y la generación de documentación. Para lectores familiarizados con otros lenguajes o frameworks de desarrollo web, esta capa del \gls{API} es análoga a los serializers de Django en \gls{Python}, los DTOs (\texttt{Data Transfer Objects}) de Spring en Java, las clases de contratos en ASP.NET en C\# y las interfaces o tipos definidos en NestJS en TypeScript, por mencionar algunos ejemplos.
+
+Cada esquema se compone de múltiples clases, cada una de las cuales refleja el propósito de la operación para la que se utiliza. Se escriben cinco clases, cada una con un sufijo que indica su propósito: la clase base (con sufijo \texttt{Base}, de forma que para una entidad \texttt{Entity} la clase base se llamaría \texttt{EntityBase}), cuyo propósito es declarar todos los atributos comunes a todas las clases en pos de minimizar la duplicación de código; la clase para creación de datos (\texttt{EntityCreate}), que consta de los atributos necesarios para crear un objeto; la clase para actualización de datos (\texttt{EntityUpdate}), que contiene los atributos necesarios para actualizar un objeto; y la clase para lectura de datos (\texttt{EntityResponse}), que consta de los atributos mínimos que se devuelven en la respuesta del \gls{API}. Algunos objetos tienen además otra clase de respuesta extendida, con prefijo \texttt{ExtendedResponse}, que contiene atributos adicionales que no son necesarios en todas las respuestas, pero que pueden ser útiles en ciertos contextos. Cada clase contiene configuraciones adicionales que proporcionan ejemplos representativos de los datos, que se ven reflejados automáticamente en la documentación del \gls{API}.
+
+Esta estructura modular y estándar para todos los esquemas de datos facilita la reutilización del código y mantiene la consistencia dentro del proyecto. Incluso si los atributos necesarios para crear una clase y los necesarios para actualizarla son los mismos, se definen en clases separadas para mantener la coherencia y facilitar la extensión en el futuro. Al mantener una separación tan definida entre las estructuras de datos utilizadas en las peticiones y respuestas del \gls{API}, y las utilizadas internamente (como los modelos de la base de datos), se facilita el mantenimiento del proyecto, se evitan dependencias innecesarias y se reduce el riesgo de \gls{sobreexposición}, es decir, de exponer más información de la necesaria en las respuestas del \gls{API}. Eso último es especialmente importante en un proyecto que maneja información sensible, como el presente.
+
+\subsection{Lógica de negocio}
+
+El módulo \texttt{services} contiene las funciones que implementan la lógica de negocio del proyecto. Cada archivo en este módulo encapsula todas las operaciones relacionadas con una clase específica. Por ejemplo, el archivo \texttt{services/student.py} contiene todas las operaciones que se pueden realizar sobre la entidad \texttt{Student}.
+
+Al interior de cada servicio existen, como mínimo, las funciones necesarias para realizar todas las operaciones \gls{CRUD} (crear, leer, actualizar y eliminar, del inglés \textit{Create, Read, Update, Delete}) sobre la entidad correspondiente, y en algunos casos, funciones adicionales que implementan operaciones más complejas. Cada operación se organiza claramente y se nombra con un prefijo que indica su responsabilidad: las funciones para creación (prefijadas con \texttt{create}, de manera que para una entidad \texttt{Entity} la función se llamaría \texttt{create\_entity}) reciben datos validados y los persisten en la base de datos; las funciones para lectura (\texttt{get\_entity\_by\_id}, \texttt{get\_all\_entities}) realizan consultas específicas o generales sobre los modelos; las funciones para actualización (\texttt{update\_entity}) modifican registros existentes; y las funciones para eliminación (\texttt{delete\_entity}) eliminan los registros de la base de datos de manera controlada. Esta estructura estándar asegura que las operaciones básicas son consistentes en todas las entidades.
+
+En cada función, el servicio interactúa tanto con los modelos como con los esquemas de datos. Los esquemas de datos se utilizan para validar los datos que cada función recibe. Se mencionó en la subsección \ref{subsec:schemas} que en cada esquema de datos se definen clases para creación (\texttt{Create}) y actualización (\texttt{Update}); estas clases se utilizan para validar los datos que ingresan a las funciones de creación (\texttt{create\_entity}) y actualización (\texttt{update\_entity}) de los servicios, respectivamente. Por su parte, los modelos cumplen su función como abstracción de la base de datos ofreciendo una interfaz orientada a objetos para interactuar con las tablas, permitiendo que cada función realice las operaciones correspondientes sobre los registros de la base de datos. Por ejemplo, la función \texttt{create\_student}, cuya responsabilidad es crear un estudiante, recibe un objeto de tipo \texttt{CreateStudent}, cuya estructura es validada automáticamente por \gls{Pydantic}, y lo utiliza para crear una instancia del modelo \texttt{Student}, que representa una nueva entrada en la tabla de estudiantes de la base de datos.
+
+Durante el proceso de ejecutar la operación que le corresponde, cada función del servicio se encarga de verificar las reglas de negocio asociadas que son demasiado intricadas como para ser validadas por \gls{Pydantic}. Verbigracia, \gls{Pydantic} puede validar fácilmente que el periodo académico ingresado sea un número, pero no puede verificar que el periodo académico sea válido en el contexto de la Universidad; esta verificación corresponde a la lógica de negocio y se realiza en la función del servicio correspondiente. Varios ejemplos de estas reglas de negocio se mencionan en la tabla \ref{tab:anotaciones}.
+
+En términos de analogía con otras tecnologías, el módulo \texttt{services} es equivalente a las capas de servicio (\textit{service layers}) en frameworks como Spring en Java, los servicios en ASP.NET en C\#, y las clases de servicios en NestJS en TypeScript. Todos estos enfoques tienen como objetivo separar la lógica de negocio tanto de los objetos que representan los datos como de las rutas del API y las representaciones de los recursos.
+
+\subsection{Rutas del API}
+
+El módulo \texttt{routers} define las rutas del \gls{API REST}, sirviendo como punto de entrada para las solicitudes \gls{HTTP} realizadas al sistema. Cada archivo en este módulo agrupa las rutas relacionadas con una entidad específica. Por ejemplo, el archivo \texttt{routers/student.py} define las rutas bajo el prefijo \texttt{/students}, donde cada ruta corresponde a una operación específica relacionada con la entidad \texttt{Student}.
+
+Cada ruta está asociada a una operación del \gls{API} cuya lógica está implementada en los servicios. Por ende, dependiendo del contenido del servicio, una ruta puede corresponder a una operación básica \gls{CRUD} o una operación personalizada que satisface necesidades específicas del negocio. Cada ruta está implementada como una función dentro del archivo y está decorada con un decorador de \gls{FastAPI} que indica el método \gls{HTTP} correspondiente. Los decoradores disponibles son \texttt{@router.get}, \texttt{@router.post}, \texttt{@router.put} y \texttt{@router.delete}, correspondientes a las operaciones estándar de \gls{HTTP}: \texttt{GET}, \texttt{POST}, \texttt{PUT} y \texttt{DELETE}. 
+
+Un aspecto clave del diseño es la interacción entre las rutas, los servicios (\texttt{services}) y los esquemas (\texttt{schemas}). Las funciones de los \textit{routers} actúan como intermediarias: reciben las solicitudes \gls{HTTP}, validan los datos de entrada utilizando esquemas (\texttt{schemas}), delegan la lógica de negocio a las funciones correspondientes en los servicios y entregan respuestas estructuradas basadas en los esquemas de datos. Por ejemplo, una función que crea un estudiante utilizará un esquema \texttt{StudentCreate} para validar los datos de entrada, invocará a la función \texttt{create\_student} del servicio que encapsula la creación del estudiante y entregará una respuesta estructurada utilizando el esquema \texttt{StudentResponse} (o \texttt{StudentExtendedResponse} si la ruta en cuestión requiere información adicional).
+
+A causa del flujo anterior, los esquemas de tipo \texttt{Response}, como \texttt{StudentResponse}, desempeñan un papel fundamental en este proceso. Estos esquemas aseguran que las respuestas del \gls{API} estén estructuradas de manera consistente, incluyendo únicamente los atributos necesarios para el cliente y excluyendo información interna o sensible. 
+
+Además de las operaciones \gls{CRUD}, los \textit{routers} incluyen validaciones adicionales para garantizar que las solicitudes sean válidas antes de delegar el procesamiento a los servicios. Estas validaciones pueden incluir la verificación de que los identificadores no sean nulos, que los datos ingresados sean válidos y que los recursos existan antes de realizar operaciones sobre ellos. Por ejemplo, una solicitud para eliminar un estudiante puede comprobar primero si el estudiante existe, averiguándolo a través del servicio, antes de llamar a la función de eliminación del servicio.
+
+En términos de arquitectura, el módulo \texttt{routers} es análogo a los controladores (\textit{controllers}) en frameworks como Spring en Java, ASP.NET en C\#, o NestJS en TypeScript. Al igual que en estas tecnologías, el propósito de los \textit{routers} es mantener la independencia entre la lógica de negocio y la lógica de la interfaz de usuario, de forma que los cambios en la lógica de negocio no afecten la interfaz de usuario y viceversa.
 
 \section{Calidad de código}
+\label{sec:calidad_codigo}
 
 Teniendo en cuenta que el software producido es de alto valor para la universidad y por ende probablemente querrá ser mantenido, extendido y reutilizado en el futuro, su desarrollo fue sometido a rigurosos estándares de calidad de código. Esta sección detalla las herramientas y prácticas empleadas para garantizar la calidad del código.
 
@@ -188,34 +303,16 @@ Teniendo en cuenta que el software producido es de alto valor para la universida
 
 %TODO: Organizar todo esto para explicar las configuraciones de cada cosa que usé
 
-Todas las funciones y métodos de la \gls{API} están documentados mediante \glslink{docstring}{\textit{docstrings}}. Naturalmente, los docstrings siguen las convenciones definidas en el estándar \href{https://peps.python.org/pep-0257/}{\gls{PEP} 257}. Más aún, debido a que las disposiciones del estándar son notablemente flexibles, se optó por seguir la afamada convención de docstrings de \gls{NumPy}. Más específicamente, se satisfacen todos los lineamientos de la \href{https://python-sprints.github.io/pandas/guide/pandas_docstring.html}{guía de docstrings de \gls{Pandas}}.
+Todas las funciones y métodos de la \gls{API} están documentados mediante \glslink{docstring}{\textit{docstrings}}. Naturalmente, los \glslink{docstring}{docstrings} siguen las convenciones definidas en el estándar \href{https://peps.python.org/pep-0257/}{\gls{PEP} 257}. Más aún, debido a que las disposiciones del estándar son notablemente flexibles, se optó por seguir la afamada convención de \glslink{docstring}{docstrings} de \gls{NumPy}. Más específicamente, se satisfacen todos los lineamientos de la \href{https://python-sprints.github.io/pandas/guide/pandas_docstring.html}{guía de \glslink{docstring}{docstrings} de \gls{Pandas}}.
 
 Su sintaxis satisface el estilo \glslink{reST}{reStructuredText (REST)},
 % TODO: lo cual permite que los docstrings sean procesados por herramientas como \gls{Sphinx}, que genera documentación automáticamente a partir de ellos.
 
-Se hace uso del linter \gls{Flake8},
+Se hace uso del \gls{linter} \gls{Flake8},
 
-Se emplea la librería \verb|flake8-docstrings|, con la configuración \verb|docstring-convention=numpy| en el archivo de configuración de Flake8, para verificar que los docstrings sigan la convención de NumPy.
+Se emplea la librería \verb|flake8-docstrings|, con la configuración \verb|docstring-convention=numpy| en el archivo de configuración de \gls{Flake8}, para verificar que los \glslink{docstring}{docstrings} sigan la convención de \gls{NumPy}.
 
+\section{Despliegue del API}
+\label{sec:despliegue_api}
 
-
-\subsection{Representación de los datos como recursos de una API REST}
-
-Una vez los datos han sido procesados y almacenados en el Blob Storage, se exponen como recursos accesibles mediante una \gls{API REST}. La \gls{API} se encuentra escrita en Python, utilizando el framework FastAPI, y se despliega en un contenedor Docker que reside en una máquina virtual provista por la universidad.
-
-La siguiente sección trata en detalle todos los aspectos técnicos relacionados con este \gls{API REST}. Por lo pronto, basta con mostrar, a alto nivel, cuáles son los recursos que provee la \gls{API} para el consumo por parte del frontend del perfil del estudiante. La tabla \ref{tab:recursos} detalla dichos recursos y la información que contienen. Nótese que el \gls{API} expone muchos más recursos que los mostrados en la tabla, pero solo esos se utilizan en el perfil del estudiante.
-
-\begin{table}[h]
-	\centering
-	\caption{Recursos de la \gls{API REST}}
-	\alternatecolors
-	\begin{longtable}{p{3cm}p{8cm}}
-		\hline
-		\textbf{Ruta del recurso}                     & \textbf{Información}                                                                                                       \\
-		\hline
-		\verb*|/nes/student/<usuario del estudiante>| & Información básica del estudiante: nombres, apellidos, código, usuario y niveles académicos en los que ha estado inscrito. \\
-		% TODO: Completar
-		\hline
-	\end{longtable}
-	\label{tab:recursos}
-\end{table}
+Se despliega en un contenedor Docker que reside en una máquina virtual provista por la universidad.
