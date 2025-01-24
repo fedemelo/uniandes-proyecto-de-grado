@@ -1,10 +1,5 @@
 \documentclass{fmb-thesis}
 
-\title{Desarrollo del Perfil del estudiante\\dentro de No estás solo}
-\author{Federico Melo Barrero\inst{1}}
-\email{f.melo@uniandes.edu.co}
-\address{Universidad de los Andes, Bogotá D.C., Colombia}
-
 \makeglossaries
 
 \usepackage{thesis/glossary/glossary}
@@ -14,39 +9,38 @@
 \addbibresource{thesis/bibliography/visualization.bib}
 \addbibresource{thesis/bibliography/otros.bib}
 
+\usepackage[Bjornstrup]{fncychap}
+
 \begin{document}
 
-\maketitle
+\input{./thesis/titlepage}
 
 \input{./thesis/chapters/abstract}
+\clearpage
+
+\input{./thesis/chapters/acknowledgements}
+\clearpage
+
+\input{./thesis/epigraph}
+\clearpage
 
 \tableofcontents
-\vspace*{\fill}
-
-\input{./thesis/chapters/agradecimientos}
-
-\pagebreak
-\epigraph{\itshape Big Brother is watching you.}{---George Orwell, \textit{Nineteen Eighty-Four}}
-
-\pagebreak
+\clearpage
 
 \input{./thesis/chapters/introduction}
-\input{./thesis/chapters/datos}
-\input{./thesis/chapters/api}
-\input{./thesis/chapters/front}
-\input{./thesis/chapters/design}
+\input{./thesis/chapters/data}
+\input{./thesis/chapters/logic}
+\input{./thesis/chapters/presentation}
+\input{./thesis/chapters/conclusion}
 
 \appendix
 \input{./thesis/appendices/capp}
-\input{./thesis/appendices/ecosistema}
 
 \clearpage
-
 \printglossary
 \addcontentsline{toc}{chapter}{Glosario}
 
 \clearpage
-
 \printbibliography
 \addcontentsline{toc}{chapter}{Bibliografía}
 
