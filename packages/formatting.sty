@@ -4,7 +4,7 @@
 % Text format
 \parindent 1.27cm
 \parskip   6pt
-%\renewcommand{\baselinestretch}{2}  % Interlineado.
+\RequirePackage{setspace} % Interlineado.
 
 
 % Font
@@ -57,41 +57,6 @@
 }
 
 
-% First page
-\newcounter{instn}
-\setcounter{instn}{1}
-\newcommand{\instnum}{\arabic{instn}}
-\newcommand{\inst}[1]{\ensuremath{^{#1}}}
-\newcommand{\nextinstitute}{\\\mbox{}\\[-6pt] \addtocounter{instn}{1}\inst{\instnum}}
-\newcommand{\email}[1]{\\\mbox{}\\[-6pt]\footnotesize\href{mailto:#1}{\texttt{#1}}}
-\renewcommand{\and}{, }
-
-\newcommand{\authortag}[1]{$^{#1}$}
-
-\def\address#1{\gdef\@address{#1}}
-
-\def\@maketitle{\newpage
-	\begin{center}
-		\vspace*{-.7cm}
-		{\XVIPT\bf\@title\par}
-		\vglue 6pt plus 3pt minus 3pt
-			{\normalsize
-				\textbf{\begin{tabular}[t]{c}\@author\end{tabular}}\par}
-		\vspace*{-.3cm}
-		{\footnotesize\texttt{\begin{tabular}[t]{c}\@email\end{tabular}}\par}
-		\vglue 6pt plus 3pt minus 3pt
-			{\normalsize
-				\begin{tabular}[t]{c}\inst{\instnum}\@address\end{tabular}\par}
-		\vglue 6pt plus 3pt minus 3pt
-	\end{center}\par
-}
-
-\def\email#1{\gdef\@email{#1}}
-
-\let\maketitleOLD\maketitle
-\renewcommand{\maketitle}{\maketitleOLD\thispagestyle{empty}}
-
-
 % Epigraphs
 \RequirePackage{epigraph}
 \setlength\epigraphwidth{.8\textwidth}
@@ -104,7 +69,12 @@
 \definecolor{codecolor}{HTML}{FFC300}
 
 \RequirePackage{tcolorbox}
-\tcbuselibrary{most,listingsutf8,minted}
+\tcbuselibrary{most,minted}
+\RequirePackage{listings}
+\lstset{
+	basicstyle=\ttfamily,
+	breaklines=true,
+}
 
 \tcbset{tcbox width=auto,left=1mm,top=1mm,bottom=1mm,
 	right=1mm,boxsep=1mm,middle=1pt}
