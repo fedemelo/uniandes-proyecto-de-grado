@@ -4,7 +4,7 @@
 % General options
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ProcessOptions\relax
-\LoadClass[12pt,letterpaper,twoside]{book}
+\LoadClass[12pt,letterpaper,oneside]{book}
 
 % Language: Spanish
 \RequirePackage[spanish]{babel}

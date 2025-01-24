@@ -11,21 +11,23 @@
 
 \usepackage[Bjornstrup]{fncychap}
 
+\renewcommand{\listtablename}{Índice de Tablas}
+
 \begin{document}
 
 \input{./thesis/titlepage}
 
 \input{./thesis/chapters/abstract}
-\clearpage
-
 \input{./thesis/chapters/acknowledgements}
-\clearpage
-
 \input{./thesis/epigraph}
-\clearpage
 
 \tableofcontents
-\clearpage
+
+\listoffigures
+\addcontentsline{toc}{chapter}{Índice de Figuras}
+
+\listoftables
+\addcontentsline{toc}{chapter}{Índice de Tablas}
 
 \input{./thesis/chapters/introduction}
 \input{./thesis/chapters/data}
@@ -36,11 +38,9 @@
 \appendix
 \input{./thesis/appendices/capp}
 
-\clearpage
 \printglossary
 \addcontentsline{toc}{chapter}{Glosario}
 
-\clearpage
 \printbibliography
 \addcontentsline{toc}{chapter}{Bibliografía}
 
