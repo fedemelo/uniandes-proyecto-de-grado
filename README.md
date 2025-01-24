@@ -19,6 +19,12 @@ If neither the bibliography nor the glossary were updated, and auxiliary files h
 make quick
 ``` 
 
+If the compilation was working fine but it suddenly stopped working, try cleaning auxiliary files with:
+```bash
+make clean
+```
+And then compile again.
+
 To compile the thesis proposal, use `make proposal`.
 
 ### Format the Code
@@ -33,11 +39,3 @@ To format a single file, use:
 make format FILE=thesis/main.tex
 ```
 where `thesis/main.tex` can be replaced with the path to the file you want to format.
-
-
-### Clean Up
-
-To clean up the temporary files, use:
-```bash
-make clean
-```
