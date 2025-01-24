@@ -14,12 +14,12 @@ En aras de que el Perfil del estudiante satisfaga su expectativa como núcleo de
 		colspec = {X[1,l] X[1,l] X[5,l]},
 	}
 	\hline
-	\textbf{Nombre}               & \textbf{Nombre Formal}     & \textbf{Descripción}                                                                                                                                                                                                                                                                                                                                                                                                                                       \\
+	\textbf{Nombre}               & \textbf{Nombre Formal}     & \textbf{Descripción}                                                                                                                                                                                                                                                                                                                                                                                                                          \\
 	\hline
-	Advise                        & Ellucian CRM Advise        & Sistema de gestión de relaciones con los estudiantes (CRM) que permite a las instituciones identificar y apoyar proactivamente a estudiantes en riesgo, facilitando intervenciones personalizadas para mejorar su éxito académico. \cite{advise}                                                                                                                                                                                                           \\
+	Advise                        & Ellucian CRM Advise        & Sistema de gestión de relaciones con los estudiantes (CRM) que permite a las instituciones identificar y apoyar proactivamente a estudiantes en riesgo, facilitando intervenciones personalizadas para mejorar su éxito académico. \cite{advise}                                                                                                                                                                                              \\
 	Banner                        & Ellucian Banner            & Sistema de planificación de recursos empresariales (ERP) diseñado para instituciones de educación superior. Gestiona procesos académicos y administrativos, incluyendo matrículas, registros académicos, finanzas y recursos humanos. \cite{banner} Almacena el registro académico completo de cada uno de los estudiantes de la Universidad en todos los niveles académicos, así como algunos de los antecedentes académicos del estudiante. \\
-	Oferta de Cursos              & Portal de Oferta de Cursos & Plataforma web que permite a los estudiantes consultar los cursos disponibles en cada periodo académico, incluyendo información detallada sobre horarios y profesores. \cite{oferta_cursos}                                                                                                                                                                                                                                                                \\
-	Sistema de Gestión Financiera &                            & Representación genérica de los sistemas contables y financieros de la universidad, en los que se maneja la información relacionada con becas, créditos educativos y pagos realizados por los estudiantes, así como datos socioeconómicos relevantes para la asignación de auxilios financieros.                                                                                                                                     \\
+	Oferta de Cursos              & Portal de Oferta de Cursos & Plataforma web que permite a los estudiantes consultar los cursos disponibles en cada periodo académico, incluyendo información detallada sobre horarios y profesores. \cite{oferta_cursos}                                                                                                                                                                                                                                                   \\
+	Sistema de Gestión Financiera &                            & Representación genérica de los sistemas contables y financieros de la universidad, en los que se maneja la información relacionada con becas, créditos educativos y pagos realizados por los estudiantes, así como datos socioeconómicos relevantes para la asignación de auxilios financieros.                                                                                                                                               \\
 	\hline
 \end{longtblr}
 
@@ -103,7 +103,7 @@ A causa de eso, el notebook genera varios archivos PARQUET que almacenan la info
 	\label{fig:blobs_generados}
 \end{figure}
 
-La tabla \ref{tab:blobs_generados} detalla los archivos generados y la información que contienen, a pesar de que los nombres de los archivos son autoexplicativos. En favor de la claridad, para cada archivo se describe de qué manera se debe interpretar cada registro. 
+La tabla \ref{tab:blobs_generados} detalla los archivos generados y la información que contienen, a pesar de que los nombres de los archivos son autoexplicativos. En favor de la claridad, para cada archivo se describe de qué manera se debe interpretar cada registro.
 
 \begin{longtblr}[
 		caption = {Archivos generados por el proceso de transformación y su contenido},
@@ -112,14 +112,14 @@ La tabla \ref{tab:blobs_generados} detalla los archivos generados y la informaci
 		colspec = {X[1,l] X[3,l]},
 	}
 	\hline
-	\textbf{Archivo}                        & \textbf{Contenido}                                                                                                  \\
+	\textbf{Archivo}                        & \textbf{Contenido}                                                                                                                                                                                                                                                                            \\
 	\hline
-	rendimiento\_estudiantes\_por\_periodo  & Contiene el rendimiento académico de los estudiantes. Cada registro consta de indicadores académicos calculados para un estudiante en un periodo académico específico. \\
-	criterios\_riesgo\_pregrado             & Almacena información relacionada con los criterios de riesgo académico en programas de pregrado. Cada registro corresponde a un estudiante e indica qué criterios de riesgo cumple, en caso de cumplir alguno. \\
-	capp\_requisitos\_estudiantes           & Registra los requisitos cumplidos y pendientes de los estudiantes para la formalización de su grado. Cada registro representa un estudiante y especifica los requisitos cumplidos y los que aún están pendientes. \\
-	materias\_por\_estudiante               & Incluye el detalle de las materias inscritas y su información correspondiente por estudiante y periodo académico. Cada registro representa un curso inscrito por un estudiante en un periodo académico. \\
+	rendimiento\_estudiantes\_por\_periodo  & Contiene el rendimiento académico de los estudiantes. Cada registro consta de indicadores académicos calculados para un estudiante en un periodo académico específico.                                                                                                                        \\
+	criterios\_riesgo\_pregrado             & Almacena información relacionada con los criterios de riesgo académico en programas de pregrado. Cada registro corresponde a un estudiante e indica qué criterios de riesgo cumple, en caso de cumplir alguno.                                                                                \\
+	capp\_requisitos\_estudiantes           & Registra los requisitos cumplidos y pendientes de los estudiantes para la formalización de su grado. Cada registro representa un estudiante y especifica los requisitos cumplidos y los que aún están pendientes.                                                                             \\
+	materias\_por\_estudiante               & Incluye el detalle de las materias inscritas y su información correspondiente por estudiante y periodo académico. Cada registro representa un curso inscrito por un estudiante en un periodo académico.                                                                                       \\
 	matriculas\_pago\_detalle\_transformado & Presenta las especificidades de las matrículas y los pagos realizados por los estudiantes tras la transformación de datos. Cada registro corresponde a un pago realizado por una fuente de financiación que cubre total o parcialmente la matrícula de un estudiante en un periodo académico. \\
-	grados\_por\_estudiante                 & Contiene información sobre los grados obtenidos por los estudiantes, incluyendo fechas y programas. Cada registro corresponde a un grado obtenido por un estudiante. \\
+	grados\_por\_estudiante                 & Contiene información sobre los grados obtenidos por los estudiantes, incluyendo fechas y programas. Cada registro corresponde a un grado obtenido por un estudiante.                                                                                                                          \\
 	\hline
 \end{longtblr}
 
