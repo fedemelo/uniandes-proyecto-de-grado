@@ -1,0 +1,20 @@
+\chapter{Conclusión}
+\label{ch:conclusion}
+
+Este proyecto ha explorado de manera exhaustiva el desarrollo del módulo de Perfil del estudiante, integrado dentro de la plataforma web \gls{NES}, a través de la arquitectura clásica de tres capas: datos, lógica y presentación. Cada una de estas capas fue abordada con detalle, tanto desde su diseño conceptual como desde su implementación técnica, utilizando tecnologías modernas y las mejores prácticas de desarrollo de software.
+
+La capa de datos constituye el cimiento del sistema, responsable de la extracción, transformación y carga (\gls{ETL}) de información relevante proveniente de diversas fuentes institucionales. La calidad y consistencia de los datos se garantizan mediante un pipeline de analítica notablemente robusto, implementado en cuadernos de \gls{Jupyter} en \gls{Python}, con la imprescindible colaboración de Santiago Martínez Novoa.
+
+La capa de lógica es el núcleo del sistema, encargada de procesar los datos y exponerlos a través de un \gls{API REST}. Implementada con \gls{FastAPI}, esta capa utiliza esquemas y modelos bien definidos, asegurando que los datos fueran accesibles de manera eficiente y segura. Su diseño asegura la independencia entre capas, permitiendo que el \gls{API} sea escalable, mantenible y fácil de integrar con otros sistemas.
+
+En este punto se contemplaron preocupaciones a nivel de seguridad que nacen naturalmente a raíz de la sensibilidad de los datos manejados. Además de la seguridad manejada a nivel de software, la información se almacenó en una base de datos \gls{PostgreSQL}, alojada en una máquina que está protegida del internet, separada físicamente mediante \textit{air gapping}.
+
+La capa de presentación es la cara del sistema. Ofrece una interfaz de usuario interactiva, accesible y amigable, desarrollada con \gls{React} y \gls{TypeScript}. Diseñada para satisfacer las necesidades de estudiantes, profesores y directivos, esta capa organiza la información en pestañas intuitivas y utiliza herramientas visuales como gráficos y tablas interactivas que facilitan la navegación y comprensión de los datos.
+
+El alcance de este proyecto no se limitó a la construcción técnica de estas tres capas. También incluyó el despliegue en un entorno real de producción, enfrentando retos como la integración con otros módulos de \gls{NES}, la gestión de seguridad de la información y la optimización del rendimiento. Esto convierte al Perfil del estudiante en un proyecto integral, que abarca todos los aspectos del ciclo de vida del desarrollo de software. Es razonable afirmar que cada una de las capas podría ser, por sí sola, el tema central de una tesis completa. Este trabajo, sin embargo, logró integrarlas en un producto funcional que ya está generando un impacto tangible en la comunidad universitaria.
+
+La esencia de la ingeniería radica en poner el conocimiento técnico al servicio a la sociedad. Da gran orgullo percatarse de que este proyecto cumple con ese propósito. El Perfil del estudiante no solo mejora la vida académica y profesional de estudiantes, profesores y directivos, sino que también fortalece el rol de la Universidad de los Andes como una institución líder en Colombia. Al facilitar la toma de decisiones informadas, apoyar a los estudiantes en riesgo académico y optimizar el uso de recursos, este sistema contribuye al desarrollo de la comunidad uniandina y, en última instancia, al progreso del país.
+
+Finalmente, resulta simbólico observar que la palabra más frecuente en este documento es "estudiante". Esto refleja el espíritu central del proyecto: un sistema concebido por un estudiante, con el apoyo de un equipo de estudiantes y diseñado para el beneficio del estudiantado.
+
+Ojalá que este software continúe siendo, por mucho tiempo, un aporte tangible al bienestar de todos en la Universidad de los Andes.
