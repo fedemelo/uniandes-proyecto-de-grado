@@ -231,28 +231,37 @@ Cada combinación de botones seleccionada resulta en una visualización distinta
 	\item \textbf{Promedios, Vista acumulada, Escala estándar.} Esta visualización se titula \say{PGA a través del tiempo} y muestra la evolución del Promedio General Acumulado (PGA) del estudiante a lo largo del tiempo, en una escala estándar cuyo valor mínimo es 1.5 y cuyo valor máximo es 5.0. Cada punto de la gráfica representa el PGA del estudiante en un periodo académico específico. En la escala estándar se dibujan dos líneas de referencia: la inferior corresponde al PGA mínimo y se traza en rojo a la altura del 3.0; la superior corresponde al PGA máximo y se traza en verde a la altura del 5.0. Se presenta en la figura \ref{fig:pga_estandar}.
 
 	      \begin{figure}[H]
-		      \centering
-		      \includegraphics[width=0.8\textwidth]{assets/nes/pga_estandar.png}
-		      \caption{Visualización de PGA a través del tiempo en escala estándar.}
-		      \label{fig:pga_estandar}
+		      \noindent
+		      \hspace{\leftmargin}
+		      \begin{minipage}{\dimexpr\linewidth-\leftmargin\relax}
+			      \includegraphics[width=\linewidth]{assets/nes/pga_estandar.png}
+			      \caption{Visualización de PGA a través del tiempo en escala estándar.}
+			      \label{fig:pga_estandar}
+		      \end{minipage}
 	      \end{figure}
 
 	\item \textbf{Promedios, Vista acumulada, Escala relativa.} Esta visualización transmite la misma información que la anterior y se titula igual. La diferencia radica en el enfoque que da a la información. Se modifica la escala de la gráfica para que el menor valor sea el PGA mínimo que el estudiante ha obtenido y el mayor valor sea el PGA máximo que ha alcanzado. Esto pone el énfasis en la variabilidad del PGA del alumno a lo largo del tiempo, permitiendo ver los periodos en los que mejoró o empeoró su rendimiento académico. Se presenta en la figura \ref{fig:pga_relativo}.
 
 	      \begin{figure}[H]
-		      \centering
-		      \includegraphics[width=0.8\textwidth]{assets/nes/pga_relativo.png}
-		      \caption{Visualización de PGA a través del tiempo en escala relativa.}
-		      \label{fig:pga_relativo}
+		      \noindent
+		      \hspace{\leftmargin}
+		      \begin{minipage}{\dimexpr\linewidth-\leftmargin\relax}
+			      \includegraphics[width=\linewidth]{assets/nes/pga_relativo.png}
+			      \caption{Visualización de PGA a través del tiempo en escala relativa.}
+			      \label{fig:pga_relativo}
+		      \end{minipage}
 	      \end{figure}
 
 	\item \textbf{Promedios, Vista por periodo, Escala estándar.} Esta visualización se titula \say{Promedios semestrales a través del tiempo} y muestra los promedios semestrales que el estudiante ha obtenido a lo largo del tiempo. Cada punto de la gráfica representa el promedio semestral del alumno en un periodo académico específico. Se utiliza la misma escala estándar que en la visualización 1. Se presenta en la figura \ref{fig:promedios_estandar}.
 
 	      \begin{figure}[H]
-		      \centering
-		      \includegraphics[width=0.8\textwidth]{assets/nes/promedios_estandar.png}
-		      \caption{Visualización de promedios semestrales a través del tiempo en escala estándar.}
-		      \label{fig:promedios_estandar}
+		      \noindent
+		      \hspace{\leftmargin}
+		      \begin{minipage}{\dimexpr\linewidth-\leftmargin\relax}
+			      \includegraphics[width=\linewidth]{assets/nes/promedios_estandar.png}
+			      \caption{Visualización de promedios semestrales a través del tiempo en escala estándar.}
+			      \label{fig:promedios_estandar}
+		      \end{minipage}
 	      \end{figure}
 
 	      En la figura \ref{fig:promedios_estandar} resalta que hay un hueco en la gráfica. Esto puede suceder para alumnos que en un periodo académico determinado no tuvieron un promedio semestral numérico. Lo anterior puede deberse a varias causas; algunas de las más comunes son que el estudiante haya cursado un intercambio académico o una práctica académica, o que únicamente haya visto materias con calificación alfabética (por ejemplo: deportes o cursos de inglés). En estos casos, no se calcula un promedio semestral numérico, lo cual se ve reflejado en la gráfica mediante un salto. Ese espacio no se evidencia en la gráfica de la visualización 1 porque el PGA siempre es numérico, y si en un semestre no hay promedio semestral, el PGA se calcula con los promedios semestrales de los semestres anteriores.
@@ -260,82 +269,109 @@ Cada combinación de botones seleccionada resulta en una visualización distinta
 	\item \textbf{Promedios, Vista por periodo, Escala relativa.} Similar a la visualización 2, esta visualización corresponde a la misma información de la visualización 3 pero pone el foco en el comportamiento del promedio semestral del estudiante a lo largo del tiempo. Se presenta en la figura \ref{fig:promedios_relativo}.
 
 	      \begin{figure}[H]
-		      \centering
-		      \includegraphics[width=0.8\textwidth]{assets/nes/promedios_relativo.png}
-		      \caption{Visualización de promedios semestrales a través del tiempo en escala relativa.}
-		      \label{fig:promedios_relativo}
+		      \noindent
+		      \hspace{\leftmargin}
+		      \begin{minipage}{\dimexpr\linewidth-\leftmargin\relax}
+			      \includegraphics[width=\linewidth]{assets/nes/promedios_relativo.png}
+			      \caption{Visualización de promedios semestrales a través del tiempo en escala relativa.}
+			      \label{fig:promedios_relativo}
+		      \end{minipage}
 	      \end{figure}
 
 	\item \textbf{Porcentaje de Créditos Aprobados, Vista acumulada, Escala estándar.} Esta visualización se titula \say{Porcentaje acumulado de créditos aprobados} y muestra como ha cambiado el porcentaje de créditos aprobados por el alumno a lo largo del tiempo. En cada periodo, el porcentaje de créditos aprobados es acumulado, por lo cual contempla los periodos anteriores. Se utiliza una escala estándar con un mínimo de 0\% y un máximo de 100\%. Se trazan dos líneas de referencia, que son proporcionales a las trazadas en la visualización 1: la inferior se traza en rojo y corresponde al 60\% de los créditos aprobados; la superior se traza en verde y corresponde al 100\% de los créditos aprobados. Se presenta en la figura \ref{fig:porcentaje_estandar}.
 
 	      \begin{figure}[H]
-		      \centering
-		      \includegraphics[width=0.8\textwidth]{assets/nes/porcentaje_estandar.png}
-		      \caption{Visualización de porcentaje de créditos aprobados a través del tiempo en escala estándar.}
-		      \label{fig:porcentaje_estandar}
+		      \noindent
+		      \hspace{\leftmargin}
+		      \begin{minipage}{\dimexpr\linewidth-\leftmargin\relax}
+			      \includegraphics[width=\linewidth]{assets/nes/porcentaje_estandar.png}
+			      \caption{Visualización de porcentaje de créditos aprobados a través del tiempo en escala estándar.}
+			      \label{fig:porcentaje_estandar}
+		      \end{minipage}
 	      \end{figure}
 
 	\item \textbf{Porcentaje de Créditos Aprobados, Vista acumulada, Escala relativa.} Similar a la visualización 5, esta visualización pone el énfasis en la variabilidad del porcentaje de créditos aprobados del estudiante a lo largo del tiempo, en lugar de en los valores. Se presenta en la figura \ref{fig:porcentaje_relativo}.
 
 	      \begin{figure}[H]
-		      \centering
-		      \includegraphics[width=0.8\textwidth]{assets/nes/porcentaje_relativo.png}
-		      \caption{Visualización de porcentaje de créditos aprobados a través del tiempo en escala relativa.}
-		      \label{fig:porcentaje_relativo}
+		      \noindent
+		      \hspace{\leftmargin}
+		      \begin{minipage}{\dimexpr\linewidth-\leftmargin\relax}
+			      \includegraphics[width=\linewidth]{assets/nes/porcentaje_relativo.png}
+			      \caption{Visualización de porcentaje de créditos aprobados a través del tiempo en escala relativa.}
+			      \label{fig:porcentaje_relativo}
+		      \end{minipage}
 	      \end{figure}
 
 	\item \textbf{Porcentaje de Créditos Aprobados, Vista por periodo, Escala estándar.} Esta visualización se titula \say{Porcentaje de créditos aprobados por periodo} y muestra el porcentaje de créditos aprobados por el alumno en cada periodo académico, sin contemplar los periodos anteriores. Esto permite estudiar el desempeño del estudiante en cada periodo de forma independiente. Se utiliza la misma escala estándar que en la visualización 5. Se presenta en la figura \ref{fig:porcentaje_periodo_estandar}.
 
 	      \begin{figure}[H]
-		      \centering
-		      \includegraphics[width=0.8\textwidth]{assets/nes/porcentaje_periodo_estandar.png}
-		      \caption{Visualización de porcentaje de créditos aprobados por periodo en escala estándar.}
-		      \label{fig:porcentaje_periodo_estandar}
+		      \noindent
+		      \hspace{\leftmargin}
+		      \begin{minipage}{\dimexpr\linewidth-\leftmargin\relax}
+			      \includegraphics[width=\linewidth]{assets/nes/porcentaje_periodo_estandar.png}
+			      \caption{Visualización de porcentaje de créditos aprobados por periodo en escala estándar.}
+			      \label{fig:porcentaje_periodo_estandar}
+		      \end{minipage}
 	      \end{figure}
 
 	\item \textbf{Porcentaje de Créditos Aprobados, Vista por periodo, Escala relativa.} Similar a la visualización 7, esta visualización pone el énfasis en el comportamiento del porcentaje de créditos aprobados del estudiante en cada periodo académico. Se presenta en la figura \ref{fig:porcentaje_periodo_relativo}.
 
 	      \begin{figure}[H]
-		      \centering
-		      \includegraphics[width=0.8\textwidth]{assets/nes/porcentaje_periodo_relativo.png}
-		      \caption{Visualización de porcentaje de créditos aprobados por periodo en escala relativa.}
-		      \label{fig:porcentaje_periodo_relativo}
+		      \noindent
+		      \hspace{\leftmargin}
+		      \begin{minipage}{\dimexpr\linewidth-\leftmargin\relax}
+			      \includegraphics[width=\linewidth]{assets/nes/porcentaje_periodo_relativo.png}
+			      \caption{Visualización de porcentaje de créditos aprobados por periodo en escala relativa.}
+			      \label{fig:porcentaje_periodo_relativo}
+		      \end{minipage}
 	      \end{figure}
 
 	\item \textbf{Créditos Aprobados, Vista acumulada, Escala estándar.} Esta visualización se titula \say{Créditos aprobados acumulados} y muestra la cantidad de créditos aprobados por el estudiante a lo largo del tiempo. En cada periodo, los créditos aprobados son acumulados, por lo cual contempla los periodos anteriores. La escala estándar usa un mínimo de 0 créditos y utiliza como máximo el número de créditos aprobados por el alumno hasta la fecha. No se trazan líneas de referencia, pues no tiene sentido para esta gráfica, en la que un valor bajo en el total de créditos aprobados no indica un mal rendimiento sino simplemente una etapa temprana en la carrera del estudiante. Se presenta en la figura \ref{fig:creditos_estandar}.
 
 	      \begin{figure}[H]
-		      \centering
-		      \includegraphics[width=0.8\textwidth]{assets/nes/creditos_estandar.png}
-		      \caption{Visualización de créditos aprobados a través del tiempo en escala estándar.}
-		      \label{fig:creditos_estandar}
+		      \noindent
+		      \hspace{\leftmargin}
+		      \begin{minipage}{\dimexpr\linewidth-\leftmargin\relax}
+			      \includegraphics[width=\linewidth]{assets/nes/creditos_estandar.png}
+			      \caption{Visualización de créditos aprobados a través del tiempo en escala estándar.}
+			      \label{fig:creditos_estandar}
+		      \end{minipage}
 	      \end{figure}
 
 	\item \textbf{Créditos Aprobados, Vista acumulada, Escala relativa.} Esta visualización resulta muy similar a la anterior, con la única diferencia en que el valor mínimo es el número de créditos aprobados por el alumno en el periodo más temprano, en lugar de ser 0 créditos. Se presenta en la figura \ref{fig:creditos_relativo}.
 
 	      \begin{figure}[H]
-		      \centering
-		      \includegraphics[width=0.8\textwidth]{assets/nes/creditos_relativo.png}
-		      \caption{Visualización de créditos aprobados a través del tiempo en escala relativa.}
-		      \label{fig:creditos_relativo}
+		      \noindent
+		      \hspace{\leftmargin}
+		      \begin{minipage}{\dimexpr\linewidth-\leftmargin\relax}
+			      \includegraphics[width=\linewidth]{assets/nes/creditos_relativo.png}
+			      \caption{Visualización de créditos aprobados a través del tiempo en escala relativa.}
+			      \label{fig:creditos_relativo}
+		      \end{minipage}
 	      \end{figure}
 
 	\item \textbf{Créditos Aprobados, Vista por periodo, Escala estándar.} Esta visualización se titula \say{Créditos aprobados por periodo} y muestra la cantidad de créditos aprobados por el estudiante en cada periodo académico, sin contemplar los periodos anteriores. La escala estándar usa un mínimo de 0 créditos y un máximo que depende del número de créditos aprobados en el periodo con más créditos aprobados. Se traza una línea de referencia, a la altura de los 11 créditos, que no necesariamente tiene connotaciones negativas, teniendo en cuenta que el alumno puede haber cursado matrículas parciales. Se presenta en la figura \ref{fig:creditos_periodo_estandar}.
 
 	      \begin{figure}[H]
-		      \centering
-		      \includegraphics[width=0.8\textwidth]{assets/nes/creditos_periodo_estandar.png}
-		      \caption{Visualización de créditos aprobados por periodo en escala estándar.}
-		      \label{fig:creditos_periodo_estandar}
+		      \noindent
+		      \hspace{\leftmargin}
+		      \begin{minipage}{\dimexpr\linewidth-\leftmargin\relax}
+			      \includegraphics[width=\linewidth]{assets/nes/creditos_periodo_estandar.png}
+			      \caption{Visualización de créditos aprobados por periodo en escala estándar.}
+			      \label{fig:creditos_periodo_estandar}
+		      \end{minipage}
 	      \end{figure}
 
 	\item \textbf{Créditos Aprobados, Vista por periodo, Escala relativa.} Esta última visualización presenta la misma información que la visualización 11, pero pone el énfasis en el comportamiento del número de créditos aprobados por el estudiante en cada periodo académico. Se presenta en la figura \ref{fig:creditos_periodo_relativo}.
 
 	      \begin{figure}[H]
-		      \centering
-		      \includegraphics[width=0.8\textwidth]{assets/nes/creditos_periodo_relativo.png}
-		      \caption{Visualización de créditos aprobados por periodo en escala relativa.}
-		      \label{fig:creditos_periodo_relativo}
+		      \noindent
+		      \hspace{\leftmargin}
+		      \begin{minipage}{\dimexpr\linewidth-\leftmargin\relax}
+			      \includegraphics[width=\linewidth]{assets/nes/creditos_periodo_relativo.png}
+			      \caption{Visualización de créditos aprobados por periodo en escala relativa.}
+			      \label{fig:creditos_periodo_relativo}
+		      \end{minipage}
 	      \end{figure}
 \end{enumerate}
 
@@ -359,19 +395,25 @@ Cada combinación de botones seleccionada resulta en una visualización distinta
 	\item \textbf{Esconder alguna, dos o todas las curvas.} La gráfica permite al usuario seleccionar cuáles curvas desea visualizar. Por defecto, se muestran todas las curvas, pero el usuario puede deseleccionar alguna o todas las curvas para enfocarse en una sola o en contrastar dos curvas. Esto resulta útil para reducir el ruido en análisis específicos, como comparar el número de créditos aprobados con el número de créditos reprobados, determinar el comportamiento de específicamente los créditos retirados, entre otros. En la figura \ref{fig:creditos_retirados} se muestra un ejemplo en el que se han deseleccionado las curvas de créditos aprobados y reprobados, dejando solo la curva de créditos retirados.
 
 	      \begin{figure}[H]
-		      \centering
-		      \includegraphics[width=0.8\textwidth]{assets/nes/creditos_retirados.png}
-		      \caption{Gráfica de créditos por periodo con solo la curva de créditos retirados.}
-		      \label{fig:creditos_retirados}
+		      \noindent
+		      \hspace{\leftmargin}
+		      \begin{minipage}{\dimexpr\linewidth-\leftmargin\relax}
+			      \includegraphics[width=\linewidth]{assets/nes/creditos_retirados.png}
+			      \caption{Gráfica de créditos por periodo con solo la curva de créditos retirados.}
+			      \label{fig:creditos_retirados}
+		      \end{minipage}
 	      \end{figure}
 
 	\item \textbf{Vista por periodo o acumulada.} Al igual que la gráfica central, esta de créditos por periodo permite al usuario alternar entre una vista por periodo y una vista acumulada. La vista por periodo muestra el comportamiento de los créditos aprobados, retirados y reprobados en cada periodo académico, mientras que la vista acumulada muestra la evolución de esos créditos a lo largo del tiempo. La vista acumulada es particularmente útil para ver cómo el número de créditos aprobados, retirados y reprobados ha cambiado a lo largo de la carrera del estudiante. La figura \ref{fig:creditos_acumulados} muestra un ejemplo de la gráfica de créditos por periodo en vista acumulada.
 
 	      \begin{figure}[H]
-		      \centering
-		      \includegraphics[width=0.8\textwidth]{assets/nes/creditos_acumulados.png}
-		      \caption{Gráfica de créditos por periodo en vista acumulada.}
-		      \label{fig:creditos_acumulados}
+		      \noindent
+		      \hspace{\leftmargin}
+		      \begin{minipage}{\dimexpr\linewidth-\leftmargin\relax}
+			      \includegraphics[width=\linewidth]{assets/nes/creditos_acumulados.png}
+			      \caption{Gráfica de créditos por periodo en vista acumulada.}
+			      \label{fig:creditos_acumulados}
+		      \end{minipage}
 	      \end{figure}
 
 	\item \textbf{Vista porcentual o absoluta.} Al igual que la tabla de créditos inscritos, la gráfica de créditos por periodo permite al usuario alternar entre una vista porcentual y una vista absoluta. La vista porcentual es particularmente útil para comparar el comportamiento de los créditos aprobados, retirados y reprobados en cada periodo académico, independientemente del número total de créditos inscritos. Las figuras \ref{fig:creditos_retirados} y \ref{fig:creditos_acumulados} constituyen ejemplos de la gráfica de créditos por en vista porcentual, mientras que la figura \ref{fig:grafica_creditos} muestra la gráfica en vista absoluta.
