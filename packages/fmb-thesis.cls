@@ -22,3 +22,9 @@
 
 % Bibliography
 \RequirePackage[backend=biber,style=numeric]{biblatex}
+
+%% Fonts and typography
+\RequirePackage{lmodern}           % Latin Modern
+\renewcommand{\sfdefault}{phv}     % Helvetica
+\RequirePackage[scaled]{beramono}  % Bera Mono (Bitstream Vera Sans Mono)
+\RequirePackage[final]{microtype}  % Improved typography
