@@ -1,6 +1,6 @@
 # Proyecto de Grado
 
-Este repositorio contiene el código fuente en LaTeX de mi proyecto de grado: *Desarrollo del Perfil del estudiante dentro de No estás solo*.
+Este repositorio contiene el código fuente en LaTeX de mi proyecto de grado: *Desarrollo del Perfil del estudiante dentro de No estás solo*, para optar al título de Ingeniero de Sistemas y Computación de la Universidad de los Andes.
 
 La documentación técnica está en inglés, como es convencional.
 
